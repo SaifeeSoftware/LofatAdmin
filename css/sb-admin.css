@@ -2252,7 +2252,9 @@ select.form-control[multiple] {
 
 textarea.form-control {
     height: auto;
+    width: 420px;
 }
+
 
 .form-group {
     margin-bottom: 1rem;
@@ -11215,6 +11217,12 @@ body.sidebar-toggled footer.sticky-footer {
     width: 100%;
 }
 
+.show1{
+    width:420px;
+
+    }
+
+
 @media (min-width: 768px) {
     body.sidebar-toggled footer.sticky-footer {
         width: calc(100% - 90px);
@@ -11225,12 +11233,16 @@ body.sidebar-toggled footer.sticky-footer {
     display: none;
 }
 
-input#usr,
+input#plan,
+input#meal,
+input#customername,
 textarea,
 #ddSelectPlan {
     width: 420px;
 }
 
+
 input[type="file"] {
     width: 310px;
 }
+

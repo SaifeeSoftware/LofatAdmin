@@ -12,7 +12,7 @@
 
 
     <title>Lofat Admin</title>
-
+    <link rel="stylesheet" href="/examples/css/form-style.css">
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
@@ -22,6 +22,8 @@
     <!-- Custom styles for this template-->
     <link href="css/sb-admin.css" rel="stylesheet">
 
+
+</head>
 </head>
 
 <body id="page-top">
@@ -210,19 +212,34 @@
 
 
                 <div class="card mb-3">
-                    <div class="card-header">File choose</div>
+                    <div class="card-header">Select the latest banner image</div>
                     <br>
-                    <form id="fileForm" name="myForm" action="/action_page.php" onsubmit="return validateForm1()" method="post" class="form-horizontal" enctype="multipart/form-data">
+                    <form id="fileBanner" name="adminForm"  onsubmit="return validate()" method="post" class="form-horizontal" enctype="multipart/form-data">
 
                         <div class="col-sm-10">
+                            <div class="show1">
+                                <div class="input-group">
+                                        <div class="input-group-prepend">
+                                          <span class="input-group-text" id="inputGroupFileG">Upload</span>
+                                        </div>
+                                        <div class="custom-file">
+                                          <input type="file" class="custom-file-input" id="sliderinput"
+                                            aria-describedby="inputGroupFileG" name="fchoose" accept="image/*" required>
+                                          <label class="custom-file-label" for="sliderinput">Choose file</label>
+                                          <div class="error" id="fileErr"></div>
+                                        </div>
+                                </div>
+                            </div>
+                                <!-- <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="inputGroupFile02"/>
+                                    <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
+                                </div> -->
 
-                            <div class="file-field">
-                                <div class="btn btn-info">
+                                <!-- <div class="btn btn-info">
                                     <span>Choose file</span>
                                     <input type="file" name="fchoose" accept="image/*" required>
-                                </div>
-
-                            </div>
+                                </div> -->
+                                      
                         </div>
                         <br>
                         <div class="col-xl-3 col-sm-6 mb-3"><button type="submit" value="Submit" class="btn btn-info">Submit</button>
@@ -243,14 +260,14 @@
                 <div class="card mb-3">
 
                     <div class="card-header"> Add New Plan </div> <br>
-                    <form name="myForm1" action="/action_page.php" onsubmit="return validateForm1()" method="post">
+                    <form id="filePlan" name="adminForm"  onsubmit="return validate()" method="post">
                         <div class="col-xl-3 col-sm-6 mb-3">
                             <div class="form-group">
 
-                                <label for="usr">Add Plan:</label>
+                                <label for="plan">Add Plan:</label>
 
-                                <input type="text" class="form-control" name="nplan" id="usr" placeholder="Add plan" pattern="[_A-z0-9]" maxlength="50" required>
-
+                                <input type="text" class="form-control" name="nameplan" id="plan" placeholder="Add plan"  maxlength="50" required >
+                                <div class="error" id="addplanErr"></div>
                             </div>
                         </div>
                         <div class="col-xl-3 col-sm-6 mb-3"><button type="submit" class="btn btn-info">Add</button></div>
@@ -265,32 +282,38 @@
                 <div class="card mb-3">
                     <div class="card-header">Add Meal </div> <br>
 
-                    <form name="myForm2" action="/action_page.php" onsubmit="return validateForm2()" method="post">
+                    <form id="fileMealAdd" name="adminForm"  onsubmit="return addMeal()" method="post">
                         <div class="col-xl-3 col-sm-6 mb-3">
                             <!-- <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
-                    Please select 
-                  </button> -->
+                                Please select 
+                            </button> -->
+                
+
                             <div class="form-group">
                                 <label for="sel1">Select list (select one):</label>
-                                <select id="ddSelectPlan" class="mdb-select md-form" required>
-                      <option value="Please select" >Please select </option>
-                      <option value="1">Wholesome Membership</option>
-                      <option value="2">Essential Membership</option>
-                      <option value="3">Vegetarian Membership</option>
-                    </select>
+                                <select id="ddSelectPlan" name="selectedplanname" class="browser-default custom-select"  required>
+                                    <option value="Please select"  >Please select </option>
+                                    <option value="1" >Wholesome Membership</option>
+                                    <option value="2">Essential Membership</option>
+                                    <option value="3">Vegetarian Membership</option>
+                                </select>
+                                <div class="error" id="selectErr"></div>
                             </div>
                         </div>
                         <div class="col-xl-3 col-sm-6 mb-3">
                             <div class="form-group">
-                                <label for="usr">Add Meal:</label>
-
-                                <input type="text" class="form-control" id="usr" placeholder="Add meal" required>
+                                <label for="meal">Add Meal:</label>
+                                    
+                                        <input type="text" class="form-control" id="meal" name="namemeal" placeholder="Add meal" required>
+                                        <div class="error" id="mealErr"></div>
                             </div>
                         </div>
                         <div class="col-xl-3 col-sm-6 mb-3">
                             <div class="form-group purple-border">
-                                <textarea id="mealdesc" rows="8" placeholder="Meal description" required></textarea>
+                                <textarea id="mealdesc" name="descmeal" class="form-control rounded-0" rows="8" placeholder="Meal description" required></textarea>
+                                <div class="error" id="mealdescErr"></div>
                             </div>
+
                         </div>
                         <div class="col-xl-3 col-sm-6 mb-3">
 
@@ -307,25 +330,45 @@
                     <div class="card-header">Customer Stories
                     </div>
                     <br>
-                    <form name="myForm3" action="/action_page.php" onsubmit="return validateForm3()" method="post">
+                    <form id="fileCust" name="adminForm"  onsubmit="return validate()" method="post">
                         <div class="col-xl-3 col-sm-6 mb-3">
                             <div class="form-group">
-                                <label for="usr">Customer Name:</label>
+                                <label for="customername">Customer Name:</label>
 
-                                <input type="text" class="form-control" id="usr" placeholder="Customer name" required>
+                                <input type="text" class="form-control" id="customername" name="cust_name" placeholder="Customer name" required>
+                                <div class="error" id="custnameErr"></div>
                             </div>
                         </div>
                         <div class="col-xl-3 col-sm-6 mb-3">
-                            <textarea rows="6" placeholder="Customer description" required></textarea>
+                            <textarea class="form-control rounded-0" name="cust_desc" rows="6" placeholder="Customer description" required></textarea>
+                            <div class="error" id="custdescErr"></div>
                         </div>
                         <div class="col-sm-10">
 
-                            <div class="file-field">
+                                <div class="show1">
+                                
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            
+                                          <span class="input-group-text" id="inputGroupFile">Upload</span>
+                                        </div>
+                                        <div class="custom-file">
+                                          <input type="file" class="custom-file-input" id="custprofileinput"
+                                            aria-describedby="inputGroupFile" name="fchooseprofile" accept="image/*" required>
+                                          <label class="custom-file-label" for="custprofileinput">Choose file</label>
+                                          <div class="error" id="filecErr"></div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                               
+                                    
+                            <!-- <div class="file-field">
                                 <div class="btn btn-info">
                                     <span>Choose file</span>
-                                    <input type="file" accept="image/*" required>
+                                    <input type="file" name="f_choose" accept="image/*" required>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                         <br>
                         <div class="col-xl-3 col-sm-6 mb-3"><button type="submit" class="btn btn-info">Submit</button>
@@ -344,6 +387,7 @@
                             <div class="card-body">
                                 <canvas id="myPieChart" width="100%" height="100"></canvas>
                             </div>
+                            <div class="card-footer small text-muted"></div>
                             <!-- <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div> -->
                         </div>
                     </div>
