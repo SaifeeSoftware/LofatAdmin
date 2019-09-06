@@ -285,28 +285,22 @@
             <div class="col-sm-12">
                 <div class="card mb-3">
                     <div class="card-header">Add Meal </div> <br>
-                    <form id="filePlan" name="adminForm"  class="needs-validation" novalidate >
+                    <form class="was-validated" >
                         <div class="col-xl-3 col-sm-6 mb-3">
-                            
-                
 
                             <div class="form-group">
-                                <label for="sel1">Select list (select one):</label>
-                                <select id="ddSelectPlan" name="selectedplanname" class="browser-default custom-select"  >
-                                    <option value="Please select">Please select </option>
-                                    <option value="1" >Wholesome Membership</option>
-                                    <option value="2">Essential Membership</option>
-                                    <option value="3">Vegetarian Membership</option>
-
-                                    
-                                </select>
-                                
-                                
-                            </div>
+                                    <select class="custom-select browser-default" id="ddSelectPlan" required>
+                                      <option value="">Please select </option>
+                                      <option value="1">Wholesome Membership</option>
+                                      <option value="2">Essential Membership</option>
+                                      <option value="3">Vegetarian Membership</option>
+                                    </select>
+                                    <div class="invalid-feedback">Please Select any one of above</div>
+                                  </div>
                         </div>
-                    
+                    </form>
                    
-                    
+                        <form id="filePlan" name="adminForm"  class="needs-validation" novalidate >
                         <div class="col-xl-3 col-sm-6 mb-3">
                             <div class="form-group">
                                 <label for="meal">Add Meal:</label>
@@ -315,7 +309,7 @@
                                         <div class="invalid-feedback">
                                                 Please Provide a meal
                                             
-                                            </div>
+                                        </div>
                             </div>
                         </div>
                         <div class="col-xl-3 col-sm-6 mb-3">
@@ -394,7 +388,7 @@
                 </div>
             </div>
 
-            
+
             <div class="container">
                 <div class="row">
                     <div class="col-lg-4">
