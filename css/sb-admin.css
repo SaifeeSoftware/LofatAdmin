@@ -11229,6 +11229,17 @@ body.sidebar-toggled footer.sticky-footer {
     }
 }
 
+body
+{
+  font-family: Arial, Sans-serif;
+}
+label.error
+{
+color:red;
+font-family:verdana, Helvetica;
+}
+
+
 .hide {
     display: none;
 }

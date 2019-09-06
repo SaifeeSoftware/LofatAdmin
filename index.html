@@ -12,6 +12,7 @@
 
 
     <title>Lofat Admin</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="/examples/css/form-style.css">
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -22,8 +23,10 @@
     <!-- Custom styles for this template-->
     <link href="css/sb-admin.css" rel="stylesheet">
 
+    
 
-</head>
+
+
 </head>
 
 <body id="page-top">
@@ -138,7 +141,7 @@
           </li>
           <li class="breadcrumb-item active" >Overview</li>
         </ol> -->
-                <div class="card-header">Dashboard / Overview</div><br>
+            <div class="card-header">Dashboard / Overview</div><br>
 
                 <!-- Icon Cards-->
                 <div class="row">
@@ -207,14 +210,14 @@
                         </div>
                     </div>
 
-                </div>
+            </div>
 
 
 
                 <div class="card mb-3">
                     <div class="card-header">Select the latest banner image</div>
                     <br>
-                    <form id="fileBanner" name="adminForm"  onsubmit="return validate()" method="post" class="form-horizontal" enctype="multipart/form-data">
+                    <form id="filePlan" name="adminForm"  class="needs-validation" novalidate >
 
                         <div class="col-sm-10">
                             <div class="show1">
@@ -222,24 +225,24 @@
                                         <div class="input-group-prepend">
                                           <span class="input-group-text" id="inputGroupFileG">Upload</span>
                                         </div>
+                                        
                                         <div class="custom-file">
+                                            <div class="show1">
                                           <input type="file" class="custom-file-input" id="sliderinput"
                                             aria-describedby="inputGroupFileG" name="fchoose" accept="image/*" required>
+                                         
+                                            
                                           <label class="custom-file-label" for="sliderinput">Choose file</label>
-                                          <div class="error" id="fileErr"></div>
+                                         
+                                          <div class="invalid-feedback">
+                                                <br>
+                                                  Please Select an image
+                                            </div>
                                         </div>
+                                        </div>      
                                 </div>
                             </div>
-                                <!-- <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="inputGroupFile02"/>
-                                    <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
-                                </div> -->
-
-                                <!-- <div class="btn btn-info">
-                                    <span>Choose file</span>
-                                    <input type="file" name="fchoose" accept="image/*" required>
-                                </div> -->
-                                      
+                                
                         </div>
                         <br>
                         <div class="col-xl-3 col-sm-6 mb-3"><button type="submit" value="Submit" class="btn btn-info">Submit</button>
@@ -247,27 +250,28 @@
                     </form>
                     <div class="card-footer small text-muted"></div>
                 </div>
-            </div>
-
-
-
-
-
-
-
+           
 
             <div class="col-sm-12">
                 <div class="card mb-3">
 
                     <div class="card-header"> Add New Plan </div> <br>
-                    <form id="filePlan" name="adminForm"  onsubmit="return validate()" method="post">
+                    
+                    <form id="filePlan" name="adminForm"  class="needs-validation" novalidate >
                         <div class="col-xl-3 col-sm-6 mb-3">
                             <div class="form-group">
+                                
 
                                 <label for="plan">Add Plan:</label>
 
-                                <input type="text" class="form-control" name="nameplan" id="plan" placeholder="Add plan"  maxlength="50" required >
-                                <div class="error" id="addplanErr"></div>
+                                <input type="text" class="form-control" name="nameplan" id="plan" placeholder="Add plan" required >
+
+                                <div class="invalid-feedback">
+                                    Please Provide a new plan
+                                
+                                </div>
+
+
                             </div>
                         </div>
                         <div class="col-xl-3 col-sm-6 mb-3"><button type="submit" class="btn btn-info">Add</button></div>
@@ -281,45 +285,56 @@
             <div class="col-sm-12">
                 <div class="card mb-3">
                     <div class="card-header">Add Meal </div> <br>
-
-                    <form id="fileMealAdd" name="adminForm"  onsubmit="return addMeal()" method="post">
+                    <form id="filePlan" name="adminForm"  class="needs-validation" novalidate >
                         <div class="col-xl-3 col-sm-6 mb-3">
-                            <!-- <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
-                                Please select 
-                            </button> -->
+                            
                 
 
                             <div class="form-group">
                                 <label for="sel1">Select list (select one):</label>
-                                <select id="ddSelectPlan" name="selectedplanname" class="browser-default custom-select"  required>
-                                    <option value="Please select"  >Please select </option>
+                                <select id="ddSelectPlan" name="selectedplanname" class="browser-default custom-select"  >
+                                    <option value="Please select">Please select </option>
                                     <option value="1" >Wholesome Membership</option>
                                     <option value="2">Essential Membership</option>
                                     <option value="3">Vegetarian Membership</option>
+
+                                    
                                 </select>
-                                <div class="error" id="selectErr"></div>
+                                
+                                
                             </div>
                         </div>
+                    
+                   
+                    
                         <div class="col-xl-3 col-sm-6 mb-3">
                             <div class="form-group">
                                 <label for="meal">Add Meal:</label>
                                     
                                         <input type="text" class="form-control" id="meal" name="namemeal" placeholder="Add meal" required>
-                                        <div class="error" id="mealErr"></div>
+                                        <div class="invalid-feedback">
+                                                Please Provide a meal
+                                            
+                                            </div>
                             </div>
                         </div>
                         <div class="col-xl-3 col-sm-6 mb-3">
                             <div class="form-group purple-border">
                                 <textarea id="mealdesc" name="descmeal" class="form-control rounded-0" rows="8" placeholder="Meal description" required></textarea>
-                                <div class="error" id="mealdescErr"></div>
+                                <div class="invalid-feedback">
+                                        Please Provide meal description
+                                    </div>
                             </div>
 
                         </div>
                         <div class="col-xl-3 col-sm-6 mb-3">
 
-                            <button type="submit" class="btn btn-info">Submit</button>
+                            <button type="submit" id="submit" class="btn btn-info">Submit</button>
+                            <label id="result"></label>
                         </div>
+                   
                     </form>
+                    
                     <div class="card-footer small text-muted"></div>
                 </div>
             </div>
@@ -330,18 +345,24 @@
                     <div class="card-header">Customer Stories
                     </div>
                     <br>
-                    <form id="fileCust" name="adminForm"  onsubmit="return validate()" method="post">
+                    <form id="filePlan" name="adminForm"  class="needs-validation" novalidate >
                         <div class="col-xl-3 col-sm-6 mb-3">
                             <div class="form-group">
                                 <label for="customername">Customer Name:</label>
 
                                 <input type="text" class="form-control" id="customername" name="cust_name" placeholder="Customer name" required>
-                                <div class="error" id="custnameErr"></div>
+                                <div class="invalid-feedback">
+                                        Please Provide a customer name
+                                    
+                                    </div>
                             </div>
                         </div>
                         <div class="col-xl-3 col-sm-6 mb-3">
                             <textarea class="form-control rounded-0" name="cust_desc" rows="6" placeholder="Customer description" required></textarea>
-                            <div class="error" id="custdescErr"></div>
+                            <div class="invalid-feedback">
+                                    Please Provide customer description
+                                
+                                </div>
                         </div>
                         <div class="col-sm-10">
 
@@ -353,22 +374,17 @@
                                           <span class="input-group-text" id="inputGroupFile">Upload</span>
                                         </div>
                                         <div class="custom-file">
+                                                <div class="show1">
                                           <input type="file" class="custom-file-input" id="custprofileinput"
                                             aria-describedby="inputGroupFile" name="fchooseprofile" accept="image/*" required>
                                           <label class="custom-file-label" for="custprofileinput">Choose file</label>
-                                          <div class="error" id="filecErr"></div>
-
+                                          <div class="invalid-feedback"><br>
+                                                Please Select an image
+                                          </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                               
-                                    
-                            <!-- <div class="file-field">
-                                <div class="btn btn-info">
-                                    <span>Choose file</span>
-                                    <input type="file" name="f_choose" accept="image/*" required>
-                                </div>
-                            </div> -->
                         </div>
                         <br>
                         <div class="col-xl-3 col-sm-6 mb-3"><button type="submit" class="btn btn-info">Submit</button>
@@ -377,22 +393,24 @@
                     <div class="card-footer small text-muted"></div>
                 </div>
             </div>
+
+            
             <div class="container">
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="card mb-3">
                             <div class="card-header">
-                                <!-- <i class="fas fa-chart-pie"></i> -->
+                                
                                 Distribution by plan</div>
                             <div class="card-body">
                                 <canvas id="myPieChart" width="100%" height="100"></canvas>
                             </div>
                             <div class="card-footer small text-muted"></div>
-                            <!-- <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div> -->
+                           
                         </div>
                     </div>
 
-                    <!-- Area Chart Example-->
+                    
                     <div class="col-lg-8">
                         <div class="card mb-3">
                             <div class="card-header">
@@ -406,12 +424,12 @@
                     </div>
                 </div>
             </div>
-            <!-- DataTables Example -->
+            
 
             <div class="col-sm-12">
                 <div class="card mb-3">
                     <div class="card-header">
-                        <!-- <i class="fas fa-table" ></i> -->
+                      
                         Customer Data Table </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -427,16 +445,7 @@
                                         <th>Current Plan</th>
                                     </tr>
                                 </thead>
-                                <!-- <tfoot>
-                  <tr>
-                    <th>Customer Name</th>
-                    <th>Location</th>
-                    <th>Dish</th>
-                    <th>Start date</th>
-                    <th>End date</th>
-                    <th>Days Remaining</th>
-                  </tr>
-                </tfoot> -->
+                                
                                 <tbody>
                                     <tr>
                                         <td>Amit</td>
@@ -580,7 +589,7 @@
                         </div>
                     </div>
                     <div class="card-footer small text-muted"></div>
-                    <!-- <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div> -->
+                    
                 </div>
 
             </div>
@@ -588,9 +597,7 @@
 
 
     </div>
-    <!-- /.container-fluid -->
-
-    <!-- Sticky Footer -->
+    
     <div class="row hide">
         <footer class="sticky-footer">
             <div class="container my-auto">
@@ -648,6 +655,8 @@
     <script src="js/sb-admin.min.js"></script>
     <script src="js/validate.js"></script>
 
+    <!-- <script src="js/bootstrap-validate.js"></script> -->
+    
 
 
 
@@ -655,6 +664,9 @@
     <script src="js/demo/datatables-demo.js"></script>
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
+
+    
+
 </body>
 
 </html>
