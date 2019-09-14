@@ -25,26 +25,20 @@
     <div class="card card-login mx-auto mt-5">
       <div class="card-header">Login</div>
       <div class="card-body">
-          <form id="formLogin" name="loginForm"  class="needs-validation" novalidate >
+        <form action="" method="post" id="fileForm" role="form">
           <div class="form-group">
             <div class="form-label-group">
                 
-              <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus="autofocus">
-              <label for="inputEmail">Email address</label>
-              <div class="invalid-feedback">
-                  
-                    Please enter your email address
-              </div>
+              <input type="email" id="email" class="form-control" placeholder="Email address"  onchange="email_validate(this.value);" required >
+              <label for="email">Email address</label>
+              <div class="status" id="status"></div>
             </div>
           </div>
           <div class="form-group">
             <div class="form-label-group">
-              <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-              <label for="inputPassword">Password</label>
-              <div class="invalid-feedback">
-                 
-                    Please enter your password
-              </div>
+              <input type="password" id="pass1" class="form-control inputpass"  placeholder="Password" onchange="pass_val(this.value);" required >
+                  <label for="pass1">Password</label>
+                  <div class="status1" id="status1"></div>
             </div>
           </div>
           <div class="form-group">
