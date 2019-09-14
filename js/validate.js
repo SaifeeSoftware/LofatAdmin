@@ -121,6 +121,26 @@ $('#custprofileinput').on('change', function () {
     $(this).next('.custom-file-label').html(fileName);
 })
 
+$('#addplaninput').on('change', function () {
+    //get the file name
+    var fileName = $(this).val();
+    //replace the "Choose a file" label
+    $(this).next('.custom-file-label').html(fileName);
+})
+
+$('#mealdescinput').on('change', function () {
+    //get the file name
+    var fileName = $(this).val();
+    //replace the "Choose a file" label
+    $(this).next('.custom-file-label').html(fileName);
+})
+
+var $imageupload = $('.imageupload');
+            $imageupload.imageupload({
+                maxWidth: 500,
+                maxHeight: 500,
+                maxFileSizeKb: 3048
+            });
 
     // THE JSON ARRAY.
     

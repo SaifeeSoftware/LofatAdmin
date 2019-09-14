@@ -11258,8 +11258,13 @@ input[type="file"] {
 }
 
 body {
-    padding-top:50px;
+    padding-top:0px;
 }
+.imageupload {
+    margin: 20px 0;
+}
+
+           
 fieldset {
     border: thin solid #ccc; 
     border-radius: 4px;
