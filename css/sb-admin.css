@@ -529,7 +529,9 @@ mark,
     border: 1px solid #dee2e6;
     border-radius: 0.25rem;
     max-width: 100%;
-    height: auto;
+    height: 140px;
+    width:140px;
+    display:block;
 }
 
 .figure {
@@ -11292,4 +11294,21 @@ span.warning {
 
 span.valid {
     color: green;
+}
+
+article, aside, figure, footer, header, hgroup, 
+  menu, nav, section { display: block; }
+
+  .element {
+    @include float-left;
+  }
+  .another-element {
+    @include float-right;
+  }
+  .one-more {
+    @include float-none;
+  }
+
+  .element.style{
+    float: left;
 }

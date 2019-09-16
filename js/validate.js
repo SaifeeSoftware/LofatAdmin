@@ -135,13 +135,63 @@ $('#mealdescinput').on('change', function () {
     $(this).next('.custom-file-label').html(fileName);
 })
 
-var $imageupload = $('.imageupload');
-            $imageupload.imageupload({
-                maxWidth: 500,
-                maxHeight: 500,
-                maxFileSizeKb: 3048
-            });
+function readBannerImage(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
 
+        reader.onload = function (e) {
+            $('#imageBanner')
+                .attr('src', e.target.result)
+                .width(140)
+                .height(140);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+function readAddPlan(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#imagePlan')
+                .attr('src', e.target.result)
+                .width(140)
+                .height(140);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+function readMealDesc(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#imageMealDesc')
+                .attr('src', e.target.result)
+                .width(140)
+                .height(140);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+function readCustStories(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#imageCustStories')
+                .attr('src', e.target.result)
+                .width(140)
+                .height(140);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
     // THE JSON ARRAY.
     
         // THE JSON ARRAY.
