@@ -996,6 +996,7 @@ pre code {
         max-width: 25%;
     }
     .col-sm-4 {
+        float:left;
         -webkit-box-flex: 0;
         -ms-flex: 0 0 33.33333%;
         flex: 0 0 33.33333%;
@@ -1008,6 +1009,7 @@ pre code {
         max-width: 41.66667%;
     }
     .col-sm-6 {
+        float:left;
         -webkit-box-flex: 0;
         -ms-flex: 0 0 50%;
         flex: 0 0 50%;
@@ -11309,6 +11311,4 @@ article, aside, figure, footer, header, hgroup,
     @include float-none;
   }
 
-  .element.style{
-    float: left;
-}
+ 
