@@ -92,8 +92,11 @@ function Validate(txt) {
                         case "addPlanMeadDesc":
                             addMeal();
                             break;
-                        
 
+                        case "addCustdata":
+                            
+                            addCustomerdata();
+                            break;
 
                     }
                 }
@@ -192,6 +195,8 @@ function readCustStories(input) {
         reader.readAsDataURL(input.files[0]);
     }
 }
+
+
     // THE JSON ARRAY.
     
         // THE JSON ARRAY.
@@ -305,9 +310,53 @@ function addMeal() {
 }
 
 
+var custData = 
+{
+   "customer" :[ { 
+	                "customername" : "Ashok",
+	                "custDesc" : "Good Person",
+	                "custprofileinput" : "C:\Mypic\a.jpg"
+	            }, 
 
+	             {
+                    "customername" : "Ramesh",
+                    "custDesc" : "Kind Person",
+                    "custprofileinput" : "C:\Mypic\b.jpg"
+	            }, 
 
+                {
+                   "customername" : "Mahendra",
+	                "custDesc" : "Smart ",
+	                "custprofileinput" : "C:\Mypic\c.jpg"
+	          }, 
 
+	      ]	
 
+};
 
+var custtemplate = {
+                    "customername": "",
+                    "custDesc": "",
+                    "custprofileinput" : ""
+                  };
 
+function addCustomerdata() 
+{
+    var customername= $("#customername").val();
+    var custDesc= $("#custDesc").val();
+    var custprofileinput=$("#custprofileinput").val();
+                
+                     if(customername !== "") 
+                     { 
+
+                        custtemplate.customername=customername;
+                        custtemplate.custDesc=custDesc;
+                        custtemplate.custprofileinput=custprofileinput;
+                       
+                        custData.customer.push(custtemplate);
+
+                        console.log(custData);
+
+                        
+                     }
+}
