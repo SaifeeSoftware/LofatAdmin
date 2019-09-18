@@ -181,20 +181,21 @@ function readMealDesc(input) {
         reader.readAsDataURL(input.files[0]);
     }
 }
-function readCustStories(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
 
-        reader.onload = function (e) {
-            $('#imageCustStories')
-                .attr('src', e.target.result)
-                .width(140)
-                .height(140);
-        };
+// function readCustStories(input) {
+//     if (input.files && input.files[0]) {
+//         var reader = new FileReader();
 
-        reader.readAsDataURL(input.files[0]);
-    }
-}
+//         reader.onload = function (e) {
+//             $('#imageCustStories')
+//                 .attr('src', e.target.result)
+//                 .width(140)
+//                 .height(140);
+//         };
+
+//         reader.readAsDataURL(input.files[0]);
+//     }
+// }
 
 
     // THE JSON ARRAY.
@@ -338,7 +339,7 @@ var custtemplate = {
                     "customername": "",
                     "custDesc": "",
                     "custprofileinput" : ""
-                  };
+                   };
 
 function addCustomerdata() 
 {
@@ -354,42 +355,49 @@ function addCustomerdata()
                         custtemplate.custprofileinput=custprofileinput;
                        
                         custData.customer.push(custtemplate);
-                         debugger;
+                        debugger;
                         console.log(custData);
-
-                        
                      }
+
+   
+    readFile();                
 }
 
-//  function readFile() {
-//     if (this.files && this.files[0]) {
+  function readFile() {
+     if (this.files && this.files[0]) {
       
-//        var FR= new FileReader();
+        var FR= new FileReader();
       
-//        FR.addEventListener("load", function(e) {
-//         document.getElementById("imageCustStories").src       = e.target.result;
-//          document.getElementById("b64").innerHTML = e.target.result;
-//       }); 
+        FR.addEventListener("load", function(e) {
+         document.getElementById("imageCustStories").src= e.target.result;
+          document.getElementById("base64").innerHTML = e.target.result;
+       }); 
       
-//        FR.readAsDataURL( this.files[0] );
-//     }
-//   }
+       FR.readAsDataURL( this.files[0] );
+    }
+
+  }
   
-//   document.getElementById("custprofileinput").addEventListener("change", readFile);
+  document.getElementById("custprofileinput").addEventListener("change", readFile);
+
+ 
+
+ 
 
 
- File.prototype.convertToBase64 = function(callback){
-    var reader = new FileReader();
-     reader.onloadend = function (e) {
-         callback(e.target.result, e.target.error);
-    };   
-    reader.readAsDataURL(this);
-};
 
- $("#custprofileinput").on('change',function(){
- var selectedFile = this.files[0];
- selectedFile.convertToBase64(function(base64){
-    // alert(base64);
- }) 
- });
+//  File.prototype.convertToBase64 = function(callback){
+//     var reader = new FileReader();
+//      reader.onloadend = function (e) {
+//          callback(e.target.result, e.target.error);
+//     };   
+//     reader.readAsDataURL(this);
+// };
+
+//  $("#custprofileinput").on('change',function(){
+//  var selectedFile = this.files[0];
+//  selectedFile.convertToBase64(function(base64){
+//      alert(base64);
+//  }) 
+//  });
 
