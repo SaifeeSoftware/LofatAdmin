@@ -376,7 +376,7 @@
                                 </div>
                             </div>
 
-                                <div class="col-xl-5 col-sm-6 mb-1">
+                                <div class="col-xl-7 col-sm-4 mb-1">
 
                                     <div class="form-group">
                                         <label for="meal">Add Meal:</label>
@@ -498,19 +498,15 @@
                                             <div class="show1">
                                                 <input type="file" class="custom-file-input" id="custprofileinput"
                                                     aria-describedby="inputGroupFile" name="fchooseprofile"
-                                                    accept="image/*" required onchange="readCustStories(this);">
+                                                    accept="image/*" multiple required onchange="readCustStories(this);">
                                                 <label class="custom-file-label" for="custprofileinput">Choose
                                                     file</label>
                                                 <div class="invalid-feedback"><br>
                                                     Please Select an image
                                                 </div>
+                                               
 
-
-                                            </div>
-                                            
-                                                
-                                            
-                                            
+                                            </div>|
                                             </div>
 
                                         </div>
@@ -528,8 +524,9 @@
                         <div class="float-right">
                                 <img id="imageCustStories" src="" alt=""
                                     class="img-thumbnail">
-
-                            </div>
+                                    
+                        </div>
+                       <p id="b64"></p>
                         </div>
                         </form>
                         <div class="card-footer small text-muted"></div>

@@ -94,7 +94,7 @@ function Validate(txt) {
                             break;
 
                         case "addCustdata":
-                            
+                            debugger;
                             addCustomerdata();
                             break;
 
@@ -354,9 +354,42 @@ function addCustomerdata()
                         custtemplate.custprofileinput=custprofileinput;
                        
                         custData.customer.push(custtemplate);
-
+                         debugger;
                         console.log(custData);
 
                         
                      }
 }
+
+ function readFile() {
+    if (this.files && this.files[0]) {
+      
+       var FR= new FileReader();
+      
+       FR.addEventListener("load", function(e) {
+        document.getElementById("imageCustStories").src       = e.target.result;
+         document.getElementById("b64").innerHTML = e.target.result;
+      }); 
+      
+       FR.readAsDataURL( this.files[0] );
+    }
+  }
+  
+  document.getElementById("custprofileinput").addEventListener("change", readFile);
+
+
+// File.prototype.convertToBase64 = function(callback){
+//     var reader = new FileReader();
+//     reader.onloadend = function (e) {
+//         callback(e.target.result, e.target.error);
+//     };   
+//     reader.readAsDataURL(this);
+// };
+
+// $("#custprofileinput").on('change',function(){
+// var selectedFile = this.files[0];
+// selectedFile.convertToBase64(function(base64){
+//    alert(base64);
+// }) 
+// });
+
