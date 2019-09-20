@@ -92,7 +92,6 @@ function Validate(txt) {
                         case "addPlanMeadDesc":
                             addMeal();
                             break;
-
                         case "addCustdata":
                             debugger;
                             addCustomerdata();
@@ -117,6 +116,7 @@ $('#sliderinput').on('change', function () {
     //replace the "Choose a file" label
     $(this).next('.custom-file-label').html(fileName);
 })
+
 $('#custprofileinput').on('change', function () {
     //get the file name
     var fileName = $(this).val();
@@ -294,11 +294,12 @@ function addPlan() {
 function addMeal() {
     var meal = $("#meal").val();
     var mealdesc = $("#mealdesc").val();
+    var addSelectPlan = $("#ddSelectPlan option:selected").text();
     
     if (meal !== "") {
         mealtemplate.mealdesc = mealdesc;
         mealtemplate.meal = meal;
-        var addSelectPlan = $("#ddSelectPlan option:selected").text();
+        
         $.each(data, function (i, v) {            
             if(v.plan === addSelectPlan){
                 
@@ -316,19 +317,22 @@ var custData =
    "customer" :[ { 
 	                "customername" : "Ashok",
 	                "custDesc" : "Good Person",
-	                "custprofileinput" : "C:\Mypic\a.jpg"
+                    "custprofileinput" : "C:\Mypic\a.jpg"
+                    
 	            }, 
 
 	             {
                     "customername" : "Ramesh",
                     "custDesc" : "Kind Person",
                     "custprofileinput" : "C:\Mypic\b.jpg"
+                   
 	            }, 
 
                 {
                    "customername" : "Mahendra",
 	                "custDesc" : "Smart ",
-	                "custprofileinput" : "C:\Mypic\c.jpg"
+                    "custprofileinput" : "C:\Mypic\c.jpg"
+                    
 	          }, 
 
 	      ]	
@@ -339,28 +343,30 @@ var custtemplate = {
                     "customername": "",
                     "custDesc": "",
                     "custprofileinput" : ""
+                   
                    };
 
+var stringPath = "";
+    
 function addCustomerdata() 
 {
     var customername= $("#customername").val();
     var custDesc= $("#custDesc").val();
-    var custprofileinput=$("#custprofileinput").val();
-                
+    
                      if(customername !== "") 
                      { 
 
                         custtemplate.customername=customername;
                         custtemplate.custDesc=custDesc;
-                        custtemplate.custprofileinput=custprofileinput;
+
+                        custtemplate.custprofileinput=stringPath;
+                       
                        
                         custData.customer.push(custtemplate);
                         debugger;
                         console.log(custData);
                      }
 
-   
-    readFile();                
 }
 
   function readFile() {
@@ -370,7 +376,16 @@ function addCustomerdata()
       
         FR.addEventListener("load", function(e) {
          document.getElementById("imageCustStories").src= e.target.result;
-          document.getElementById("base64").innerHTML = e.target.result;
+        //   document.getElementById("b64").innerHTML = e.target.result;
+        
+        if(stringPath !=="")
+        {
+            stringPath = ""; 
+           
+            
+        }   
+            stringPath= e.target.result;
+
        }); 
       
        FR.readAsDataURL( this.files[0] );
@@ -378,11 +393,13 @@ function addCustomerdata()
 
   }
   
-  document.getElementById("custprofileinput").addEventListener("change", readFile);
+
+document.getElementById("custprofileinput").addEventListener("change", readFile);
+  
 
  
-
  
+
 
 
 
