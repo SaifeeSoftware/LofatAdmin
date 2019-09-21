@@ -1,28 +1,23 @@
+function sendRequest(endpoint, jsondata, succFunc, errorFunc, requestType) {
+    var apiurl = "http://localhost:8080/api/"
 
-function sendRequest(jsondata,function_name,errorFunc,requestType)
-{
+    $.ajax({
+        url: apiurl + endpoint,
 
-$.ajax({
-            url: "http://localhost",
+        data: JSON.stringify(jsondata),
 
-            data: {
-                format: "json"
-                },
+        contentType: "application/json; charset=utf-8",
 
-            contentType:"application/json; charset=utf-8",
-            
-            
-            requestType: "GET",
+        type: requestType,
 
-            error: function()
-                {
-               
-                },
+        dataType: "json",
 
-            success: function()
-                {
-                    
-                }
+        success: function(result) {
+            succFunc(result);
+        },
+        error: function(err) {
+            errorFunc(err);
+        }
 
-       });
+    });
 }
