@@ -69,16 +69,26 @@ function Validate(txt) {
                 } else {
 
                     switch (form.id) {
+                        
+                        case "addBanner":
+                             
+                              banner();
+                              break;
+                        
                         case "addNewPlan":
                             addPlan();
                             break;
+
                         case "addPlanMeadDesc":
-                            addMeal();
-                            break;
+                                
+                                addMeal();
+                                 break;
+
                         case "addCustdata":
 
-                            addCustomerdata();
-                            break;
+                                 
+                                addCustomerdata();
+                                break;
 
                     }
                 }
@@ -151,35 +161,25 @@ function readAddPlan(input) {
     }
 }
 
-function readMealDesc(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-
-        reader.onload = function(e) {
-            $('#imageMealDesc')
-                .attr('src', e.target.result)
-                .width(140)
-                .height(140);
-        };
-
-        reader.readAsDataURL(input.files[0]);
-    }
-}
 
 
 var data = [{
         "plan": "Wholesome Membership",
         "meals": [{
                 "name": "Biryani",
-                "description": "Royal Biryani"
+                "description": "Royal Biryani",
+                "image": "C:\Mypic\d.jpg"
             },
             {
                 "name": "Pan Pizza",
-                "description": "Pizza with beans"
+                "description": "Pizza with beans",
+                "image": "C:\Mypic\e.jpg"
             },
             {
                 "name": "Mendu Vada",
-                "description": "Mendu vada with sambahar"
+                "description": "Mendu vada with sambahar",
+                "image": "C:\Mypic\f.jpg"
+
             }
 
 
@@ -189,15 +189,18 @@ var data = [{
         "plan": "Essential Membership",
         "meals": [{
                 "name": "Burger",
-                "description": "sada burger"
+                "description": "sada burger",
+                "image": "C:\Mypic\g.jpg"
             },
             {
                 "name": "Chole Bhature",
-                "description": "Bhature with onion"
+                "description": "Bhature with onion",
+                "image": "C:\Mypic\h.jpg"
             },
             {
                 "name": "Samosa",
-                "description": "Samosa with sweet chutney"
+                "description": "Samosa with sweet chutney",
+                "image": "C:\Mypic\i.jpg"
             }
         ]
     },
@@ -205,15 +208,18 @@ var data = [{
         "plan": "Vegetarian Membership",
         "meals": [{
                 "name": "green salad",
-                "description": "Carrot, Radish"
+                "description": "Carrot, Radish",
+                "image": "C:\Mypic\j.jpg"
             },
             {
                 "name": "Idli",
-                "description": "Chutney , Sambhar"
+                "description": "Chutney , Sambhar",
+                "image": "C:\Mypic\k.jpg"
             },
             {
                 "name": "Paneer",
-                "description": "Palak, Paneer"
+                "description": "Palak, Paneer",
+                "image": "C:\Mypic\l.jpg"
             }
         ]
     }
@@ -241,7 +247,8 @@ var plantemplate = {
 };
 var mealtemplate = {
     "name": "",
-    "description": ""
+    "description": "",
+    "image": "",
 }
 
 function addPlan() {
@@ -255,6 +262,8 @@ function addPlan() {
     }
 }
 
+var stringPath = "";
+
 function addMeal() {
     var meal = $("#meal").val();
     var mealdesc = $("#mealdesc").val();
@@ -263,9 +272,13 @@ function addMeal() {
     if (meal !== "") {
         mealtemplate.mealdesc = mealdesc;
         mealtemplate.meal = meal;
+        mealtemplate.image = stringPath;
+
 
         $.each(data, function(i, v) {
             if (v.plan === addSelectPlan) {
+
+                debugger;
 
                 v.meals.push(mealtemplate)
                 return;
@@ -274,6 +287,32 @@ function addMeal() {
     }
 
 }
+
+function readFileMealDesc() {
+    if (this.files && this.files[0]) {
+
+        var FR = new FileReader();
+
+        FR.addEventListener("load", function(e) {
+            document.getElementById("imageMealDesc").src = e.target.result;
+
+
+            if (stringPath !== "") {
+                stringPath = "";
+
+
+            }
+            stringPath = e.target.result;
+
+        });
+
+        FR.readAsDataURL(this.files[0]);
+    }
+
+}
+
+
+document.getElementById("mealdescinput").addEventListener("change", readFileMealDesc);
 
 
 var custData = {
@@ -309,7 +348,8 @@ var custtemplate = {
 
 };
 
-var stringPath = "";
+
+
 
 function addCustomerdata() {
     var customername = $("#customername").val();
@@ -322,7 +362,7 @@ function addCustomerdata() {
 
         custtemplate.custprofileinput = stringPath;
 
-
+       debugger;
         custData.customer.push(custtemplate);
 
         console.log(custData);
@@ -330,7 +370,7 @@ function addCustomerdata() {
 
 }
 
-function readFile() {
+function readFileCust() {
     if (this.files && this.files[0]) {
 
         var FR = new FileReader();
@@ -354,4 +394,4 @@ function readFile() {
 }
 
 
-document.getElementById("custprofileinput").addEventListener("change", readFile);
+document.getElementById("custprofileinput").addEventListener("change", readFileCust);
