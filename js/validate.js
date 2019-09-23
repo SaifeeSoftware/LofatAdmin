@@ -69,26 +69,29 @@ function Validate(txt) {
                 } else {
 
                     switch (form.id) {
-                        
+
                         case "addBanner":
-                             
-                              banner();
-                              break;
-                        
+
+
+
+                            banner();
+                            break;
+
                         case "addNewPlan":
-                            addPlan();
+
+                            addPlann();
                             break;
 
                         case "addPlanMeadDesc":
-                                
-                                addMeal();
-                                 break;
+
+                            addMeal();
+                            break;
 
                         case "addCustdata":
 
-                                 
-                                addCustomerdata();
-                                break;
+
+                            addCustomerdata();
+                            break;
 
                     }
                 }
@@ -131,35 +134,123 @@ $('#mealdescinput').on('change', function() {
     $(this).next('.custom-file-label').html(fileName);
 })
 
-function readBannerImage(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
 
-        reader.onload = function(e) {
-            $('#imageBanner')
-                .attr('src', e.target.result)
-                .width(140)
-                .height(140);
-        };
+var stringPath = "";
+var banImg = {
+    "img": [{
+            "sliderinput": "C:\Mypic\ab.jpg"
+        },
+        {
+            "sliderinput": "C:\Mypic\ac.jpg"
+        },
+        {
+            "sliderinput": "C:\Mypic\ad.jpg"
+        },
+    ]
+};
+var imgTemplate = {
+    "sliderinput": ""
+};
 
-        reader.readAsDataURL(input.files[0]);
-    }
+function banner() {
+    imgTemplate.sliderinput = stringPath;
+
+    banImg.img.push(imgTemplate);
 }
 
-function readAddPlan(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
+function readBannerImage() {
+    if (this.files && this.files[0]) {
 
-        reader.onload = function(e) {
-            $('#imagePlan')
-                .attr('src', e.target.result)
-                .width(140)
-                .height(140);
-        };
+        var FR = new FileReader();
 
-        reader.readAsDataURL(input.files[0]);
+        FR.addEventListener("load", function(e) {
+            document.getElementById("imageBanner").src = e.target.result;
+
+
+            if (stringPath !== "") {
+                stringPath = "";
+
+
+            }
+            stringPath = e.target.result;
+
+        });
+
+        FR.readAsDataURL(this.files[0]);
     }
+
 }
+
+
+document.getElementById("sliderinput").addEventListener("change", readBannerImage);
+
+
+
+
+var plandata = {
+
+    "plann": [{
+            "plan": "Veg",
+            "addplaninput": "C:\MyPic\abc.jpg"
+        },
+        {
+            "plan": "Non-Veg",
+            "addplaninput": "C:\MyPic\abd.jpg"
+        },
+        {
+            "plan": "Royal",
+            "addplaninput": "C:\MyPic\abe.jpg"
+        }
+    ]
+};
+
+var addPlanTemplate = {
+    "plan": "",
+    "addplaninput": ""
+};
+
+function addPlann() {
+    var plan = $("#plan").val();
+
+
+    if (plan !== "") {
+        addPlanTemplate.plan = plan;
+        addPlanTemplate.addplaninput = stringPath;
+
+
+        plandata.plann.push(addPlanTemplate)
+
+    }
+
+
+}
+
+function readAddPlan() {
+    if (this.files && this.files[0]) {
+
+        var FR = new FileReader();
+
+        FR.addEventListener("load", function(e) {
+            document.getElementById("imagePlan").src = e.target.result;
+
+
+            if (stringPath !== "") {
+                stringPath = "";
+
+
+            }
+            stringPath = e.target.result;
+
+        });
+
+        FR.readAsDataURL(this.files[0]);
+    }
+
+}
+
+
+document.getElementById("addplaninput").addEventListener("change", readAddPlan);
+
 
 
 
@@ -262,7 +353,6 @@ function addPlan() {
     }
 }
 
-var stringPath = "";
 
 function addMeal() {
     var meal = $("#meal").val();
@@ -278,7 +368,7 @@ function addMeal() {
         $.each(data, function(i, v) {
             if (v.plan === addSelectPlan) {
 
-                debugger;
+
 
                 v.meals.push(mealtemplate)
                 return;
@@ -362,7 +452,7 @@ function addCustomerdata() {
 
         custtemplate.custprofileinput = stringPath;
 
-       debugger;
+
         custData.customer.push(custtemplate);
 
         console.log(custData);
