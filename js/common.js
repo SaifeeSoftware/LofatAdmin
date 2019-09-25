@@ -25,18 +25,20 @@ function sendRequest(endpoint, jsondata, succFunc, errorFunc, requestType) {
 }
 
 function sendXhrHttpRequest(endpoint, data, succFunct, errorFunct) {
-	var apiurl = "http://localhost:8080/api/";
+	var apiurl = "http://localhost:8045/";
 
 
 	var xhr = new XMLHttpRequest();
 	xhr.withCredentials = true;
-	url: apiurl + endpoint;
+	var url = apiurl + endpoint;
 
 	xhr.addEventListener("readystatechange", function() {
-		if (this.readyState === 4) {
-			success: function(this, responseText) {
-				succFunct(this, responseText);
-			}
+		if (this.readyState === 4) {			
+			succFunct(this.responseText);			
+			console.log(this.responseText);
+		}
+		if (this.readyState === 0) {		// todo: update error code for xhr	
+			errorFunct(this.responseText);			
 			console.log(this.responseText);
 		}
 
