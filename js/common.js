@@ -37,7 +37,7 @@ function sendXhrHttpRequest(endpoint, data, succFunct, errorFunct) {
 			succFunct(this.responseText);			
 			console.log(this.responseText);
 		}
-		if (this.readyState === 0) {		// todo: update error code for xhr	
+		if (this.readyState === 0) {		
 			errorFunct(this.responseText);			
 			console.log(this.responseText);
 		}
