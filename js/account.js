@@ -1,9 +1,9 @@
 function loginForm(){
 
    
-    var email= $("#email").val();
+    var username= $("#username").val();
     var pass1=$("#pass1").val();
-    var accountdata="username=" + email +  "&password=" + pass1 + "&grant_type=password";
+    var accountdata="username=" + username +  "&password=" + pass1 + "&grant_type=password";
     sendXhrHttpRequest("/oauth/token", accountdata, loginSuccess, loginError);
     
 
