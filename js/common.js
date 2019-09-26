@@ -24,8 +24,10 @@ function sendRequest(endpoint, jsondata, succFunc, errorFunc, requestType) {
 	});
 }
 
-function sendXhrHttpRequest(endpoint, data, succFunct, errorFunct) {
-	var apiurl = "http://localhost:8045/";
+function sendXhrHttpRequest(endpoint, accountdata, succFunct, errorFunct) {
+	
+	
+	var apiurl = "http://localhost:8045";
 
 
 	var xhr = new XMLHttpRequest();
@@ -33,11 +35,15 @@ function sendXhrHttpRequest(endpoint, data, succFunct, errorFunct) {
 	var url = apiurl + endpoint;
 
 	xhr.addEventListener("readystatechange", function() {
-		if (this.readyState === 4) {			
+		
+		if (this.readyState === 4) {	
+			debugger;		
 			succFunct(this.responseText);			
 			console.log(this.responseText);
 		}
-		if (this.readyState === 0) {		
+		debugger;
+		if (this.readyState === 0) {	
+			debugger;	
 			errorFunct(this.responseText);			
 			console.log(this.responseText);
 		}
@@ -48,5 +54,5 @@ function sendXhrHttpRequest(endpoint, data, succFunct, errorFunct) {
 	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 	xhr.setRequestHeader("Accept", "application/json");
 
-	xhr.send(data);
+	xhr.send(accountdata);
 }

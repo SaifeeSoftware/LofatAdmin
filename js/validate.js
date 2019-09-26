@@ -182,14 +182,14 @@ function readBannerImage() {
 }
 
 
-document.getElementById("sliderinput").addEventListener("change", readBannerImage);
+$("#sliderinput").on("change", readBannerImage);
 
 
 
 
 var plandata = {
 
-    "plann": [{
+    "plans": [{
             "plan": "Veg",
             "addplaninput": "C:\MyPic\abc.jpg"
         },
@@ -218,7 +218,7 @@ function addPlann() {
         addPlanTemplate.addplaninput = stringPath;
 
 
-        plandata.plann.push(addPlanTemplate)
+        plandata.plans.push(addPlanTemplate)
 
     }
 
@@ -249,7 +249,7 @@ function readAddPlan() {
 }
 
 
-document.getElementById("addplaninput").addEventListener("change", readAddPlan);
+$("#addplaninput").on("change", readAddPlan);
 
 
 
@@ -318,7 +318,7 @@ var data = [{
 ];
 
 function populateSelect() {
-    var ele = document.getElementById('ddSelectPlan');
+    var ele = $('#ddSelectPlan');
     for (var i = 0; i < data.length; i++) {
 
         ele.innerHTML = ele.innerHTML +
@@ -402,7 +402,7 @@ function readFileMealDesc() {
 }
 
 
-document.getElementById("mealdescinput").addEventListener("change", readFileMealDesc);
+$("#mealdescinput").on("change", readFileMealDesc);
 
 
 var custData = {
@@ -425,7 +425,7 @@ var custData = {
             "custDesc": "Smart ",
             "custprofileinput": "C:\Mypic\c.jpg"
 
-        },
+        }
 
     ]
 
@@ -484,4 +484,4 @@ function readFileCust() {
 }
 
 
-document.getElementById("custprofileinput").addEventListener("change", readFileCust);
+$("#custprofileinput").on("change", readFileCust);
