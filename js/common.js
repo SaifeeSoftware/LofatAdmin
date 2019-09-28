@@ -1,6 +1,9 @@
-function sendRequest(endpoint, jsondata, succFunc, errorFunc, requestType) {
-	var apiurl = "http://localhost:8080/api/";
 
+function sendRequest(endpoint, jsondata, succFunc, errorFunc, requestType) {
+
+	var apiurl = "http://localhost:8045/api/";
+
+    var bearertoken = JSON.parse(localStorage.getItem('lofatadminaccesstoken'));
 
 	$.ajax({
 		url: apiurl + endpoint,
@@ -11,7 +14,6 @@ function sendRequest(endpoint, jsondata, succFunc, errorFunc, requestType) {
 
 		type: requestType,
 
-
 		dataType: "json",
 
 		success: function(result) {
@@ -19,7 +21,11 @@ function sendRequest(endpoint, jsondata, succFunc, errorFunc, requestType) {
 		},
 		error: function(err) {
 			errorFunc(err);
-		}
+		},
+
+		
+		headers: {"Authorization": "Bearer " + bearertoken.access_token}
+
 
 	});
 }
@@ -36,12 +42,22 @@ function sendXhrHttpRequest(endpoint, accountdata, succFunct, errorFunct) {
 
 	xhr.addEventListener("readystatechange", function() {
 		
-		if (this.readyState === 4) {	
-			debugger;		
+		if (this.readyState === 4) {
+			debugger;	
+			if(this.status == 200) { 
+				debugger;
+				result = this.responseText;
+				//alert(result);
+			//	alert("we made it");
+			} else {
+				alert( " An error has occurred: " + this.statusText);
+			}	
+				
+			
 			succFunct(this.responseText);			
 			console.log(this.responseText);
 		}
-		debugger;
+		
 		if (this.readyState === 0) {	
 			debugger;	
 			errorFunct(this.responseText);			
@@ -54,5 +70,7 @@ function sendXhrHttpRequest(endpoint, accountdata, succFunct, errorFunct) {
 	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 	xhr.setRequestHeader("Accept", "application/json");
 
+	debugger;
 	xhr.send(accountdata);
+
 }

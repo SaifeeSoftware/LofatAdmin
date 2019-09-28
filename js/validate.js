@@ -1,10 +1,10 @@
-function pass_val(pass1) {
+function pass_val(pass) {
     var regPass = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d][A-Za-z\d!@#$%^&*()_+]{7,9}$/;
-    if (regPass.test(pass1) == false) {
-        document.getElementById("status1").innerHTML = "<span class='warning'>Please enter you password between 7-9 character atleast one number, alphabet, special character</span>";
+    if (regPass.test(pass) == false) {
+        document.getElementById("passstatus").innerHTML = "<span class='warning'>Please enter you password between 7-9 character atleast one number, alphabet, special character</span>";
 
     } else {
-        document.getElementById("status1").innerHTML = "<span class='valid'>Thanks for entering password</span>";
+        document.getElementById("passstatus").innerHTML = "<span class='valid'>Thanks for entering password</span>";
     }
 
 
@@ -12,23 +12,23 @@ function pass_val(pass1) {
 
 function checkPass() {
 
-    var pass1 = document.getElementById('pass1');
-    var pass2 = document.getElementById('pass2');
+    var pass = document.getElementById('pass');
+    var confpass = document.getElementById('confpass');
 
     var message = document.getElementById('confirmMessage');
 
     var goodColor = "#66cc66";
     var badColor = "#ff6666";
 
-    if (pass1.value == pass2.value) {
+    if (pass.value == confpass.value) {
 
-        pass2.style.backgroundColor = goodColor;
+        confpass.style.backgroundColor = goodColor;
         message.style.color = goodColor;
         message.innerHTML = "Passwords Match"
 
     } else {
 
-        pass2.style.backgroundColor = badColor;
+        passconf.style.backgroundColor = badColor;
         message.style.color = badColor;
         message.innerHTML = "Passwords Do Not Match!"
     }
@@ -37,16 +37,24 @@ function checkPass() {
 
 
 
-function email_validate(email) {
-    var regMail = /^([_a-zA-Z0-9-]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+([a-zA-Z]{2,3})$/;
+// function email_validate(email) {
+//     var regMail = /^([_a-zA-Z0-9-]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+([a-zA-Z]{2,3})$/;
 
-    if (regMail.test(email) == false) {
-        document.getElementById("status").innerHTML = "<span class='warning'>Email address is not valid yet.</span>";
+//     if (regMail.test(email) == false) {
+//         document.getElementById("status").innerHTML = "<span class='warning'>Email address is not valid yet.</span>";
+//     } else {
+//         document.getElementById("status").innerHTML = "<span class='valid'>Thanks, you have entered a valid Email address!</span>";
+//     }
+// }
+
+function username_validate(username) {
+    var regMail = /^[a-zA-Z0-9+]{5,7}$/;
+    if (regMail.test(username) == false) {
+        document.getElementById("unamestatus").innerHTML = "<span class='warning'>Username Should contain 5 to 7 alphanumeric character</span>";
     } else {
-        document.getElementById("status").innerHTML = "<span class='valid'>Thanks, you have entered a valid Email address!</span>";
+        document.getElementById("unamestatus").innerHTML = "<span class='valid'>Thanks, you have entered a valid Username!</span>";
     }
 }
-
 
 function Validate(txt) {
     txt.value = txt.value.replace(/[^a-zA-Z-'\n\r.]+/g, '');
@@ -138,53 +146,25 @@ $('#mealdescinput').on('change', function() {
 var stringPath = "";
 var banImg = {
     "img": [{
-            "sliderinput": "C:\Mypic\ab.jpg"
+            "sliderimg": "C:\Mypic\ab.jpg"
         },
         {
-            "sliderinput": "C:\Mypic\ac.jpg"
+            "sliderimg": "C:\Mypic\ac.jpg"
         },
         {
-            "sliderinput": "C:\Mypic\ad.jpg"
+            "sliderimg": "C:\Mypic\ad.jpg"
         },
     ]
 };
 var imgTemplate = {
-    "sliderinput": ""
+    "sliderimg": ""
 };
 
 function banner() {
-    imgTemplate.sliderinput = stringPath;
+    imgTemplate.sliderimg = stringPath;
 
     banImg.img.push(imgTemplate);
 }
-
-function readBannerImage() {
-    if (this.files && this.files[0]) {
-
-        var FR = new FileReader();
-
-        FR.addEventListener("load", function(e) {
-            document.getElementById("imageBanner").src = e.target.result;
-
-
-            if (stringPath !== "") {
-                stringPath = "";
-
-
-            }
-            stringPath = e.target.result;
-
-        });
-
-        FR.readAsDataURL(this.files[0]);
-    }
-
-}
-
-
-$("#sliderinput").on("change", readBannerImage);
-
-
 
 
 var plandata = {
@@ -225,37 +205,16 @@ function addPlann() {
 
 }
 
-function readAddPlan() {
-    if (this.files && this.files[0]) {
-
-        var FR = new FileReader();
-
-        FR.addEventListener("load", function(e) {
-            document.getElementById("imagePlan").src = e.target.result;
-
-
-            if (stringPath !== "") {
-                stringPath = "";
-
-
-            }
-            stringPath = e.target.result;
-
-        });
-
-        FR.readAsDataURL(this.files[0]);
-    }
-
-}
-
-
-$("#addplaninput").on("change", readAddPlan);
 
 
 
 
-var data = [{
+
+var data = [
+    {
         "plan": "Wholesome Membership",
+        "plandesc" : "",
+        "planimg" : [],
         "meals": [{
                 "name": "Biryani",
                 "description": "Royal Biryani",
@@ -318,14 +277,15 @@ var data = [{
 ];
 
 function populateSelect() {
+    
     var ele = $('#ddSelectPlan');
     for (var i = 0; i < data.length; i++) {
 
-        ele.innerHTML = ele.innerHTML +
-            '<option value>' + data[i]['plan'] + '</option>';
+        $(ele).html($(ele).html() + '<option value>' + data[i]['plan'] + '</option>' );
 
     }
 }
+
 
 
 $(document).ready(function() {
@@ -334,6 +294,8 @@ $(document).ready(function() {
 
 var plantemplate = {
     "plan": "",
+
+
     "meals": []
 };
 var mealtemplate = {
@@ -350,8 +312,21 @@ function addPlan() {
         data.push(plantemplate);
 
         console.log(data);
+        debugger;
+        sendRequest("plan",data,addPlanSuccess,addPlanErr,"post");
     }
 }
+
+function addPlanSuccess(result)
+{
+
+}
+
+function addPlanErr(err)
+{
+
+}
+
 
 
 function addMeal() {
@@ -378,31 +353,8 @@ function addMeal() {
 
 }
 
-function readFileMealDesc() {
-    if (this.files && this.files[0]) {
-
-        var FR = new FileReader();
-
-        FR.addEventListener("load", function(e) {
-            document.getElementById("imageMealDesc").src = e.target.result;
 
 
-            if (stringPath !== "") {
-                stringPath = "";
-
-
-            }
-            stringPath = e.target.result;
-
-        });
-
-        FR.readAsDataURL(this.files[0]);
-    }
-
-}
-
-
-$("#mealdescinput").on("change", readFileMealDesc);
 
 
 var custData = {
@@ -460,13 +412,19 @@ function addCustomerdata() {
 
 }
 
-function readFileCust() {
-    if (this.files && this.files[0]) {
+
+
+$("#custprofileinput","#sliderinput","#mealdescinput", "#addplaninput").on("change", convertImgToBase64);
+
+
+function convertImgToBase64(inputFile, imageid) {
+    
+    if (inputFile.files && inputFile.files[0]) {
 
         var FR = new FileReader();
 
         FR.addEventListener("load", function(e) {
-            document.getElementById("imageCustStories").src = e.target.result;
+            document.getElementById(imageid).src = e.target.result;
 
 
             if (stringPath !== "") {
@@ -478,10 +436,9 @@ function readFileCust() {
 
         });
 
-        FR.readAsDataURL(this.files[0]);
+        FR.readAsDataURL(inputFile.files[0]);
     }
 
 }
 
 
-$("#custprofileinput").on("change", readFileCust);

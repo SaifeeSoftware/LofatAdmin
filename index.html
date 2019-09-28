@@ -234,7 +234,7 @@
 
                                             <div class="custom-file">
                                                 <div class="myDiv">
-                                                    <input type="file" class="custom-file-input" id="sliderinput" aria-describedby="inputGroupFileG" name="fchoose" accept="image/*" required onchange="readBannerImage()">
+                                                    <input type="file" class="custom-file-input" id="sliderinput" aria-describedby="inputGroupFileG" name="fchoose" accept="image/*" required onchange="convertImgToBase64(this,'imageBanner')">
 
 
                                                     <label class="custom-file-label" for="sliderinput">Choose file</label>
@@ -242,7 +242,7 @@
 
                                                     <div class="invalid-feedback">
                                                         <br>
-                                                        Please Select an image
+                                                        Please select an image
                                                     </div>
                                                 </div>
 
@@ -284,11 +284,18 @@
                                         <input type="text" class="form-control" name="nameplan" id="plan" placeholder="Add plan" required>
 
                                         <div class="invalid-feedback">
-                                            Please Provide a new plan
+                                            Please provide a new plan
 
                                         </div>
 
                                     </div>
+
+                                    <textarea class="form-control rounded-0" id="planDesc" name="plan_desc" rows="6" placeholder="Plan description" required></textarea>
+                                    <div class="invalid-feedback">
+                                        Please provide plan description
+
+                                    </div>
+                                    <br>
 
                                 </div>
 
@@ -305,10 +312,10 @@
                                             </div>
                                             <div class="custom-file">
                                                 <div class="myDiv">
-                                                    <input type="file" class="custom-file-input" id="addplaninput" aria-describedby="inputGroupFile" name="fchooseprofile" accept="image/*" required onchange="readAddPlan()">
+                                                    <input type="file" class="custom-file-input" id="addplaninput" aria-describedby="inputGroupFile" name="fchooseprofile" accept="image/*" required onchange="convertImgToBase64(this,'planImageBanner')">
                                                     <label class="custom-file-label" for="addplaninput">Choose file</label>
                                                     <div class="invalid-feedback"><br>
-                                                        Please Select an image
+                                                        Please select an image
                                                     </div>
 
                                                 </div>
@@ -324,7 +331,7 @@
                             </div>
                             <div class="col-sm-4">
                                 <div class="float-right">
-                                    <img id="imagePlan" src="" alt="" class="img-thumbnail">
+                                    <img id="planImageBanner" src="" alt="" class="img-thumbnail">
 
                                 </div>
                             </div>
@@ -346,7 +353,7 @@
                                             <option value="">Please select </option>
 
                                         </select>
-                                        <div class="invalid-feedback">Please Select any one of above </div>
+                                        <div class="invalid-feedback">Please select any one of above </div>
                                     </div>
                                 </div>
 
@@ -357,7 +364,7 @@
 
                                         <input type="text" class="form-control" id="meal" name="namemeal" placeholder="Add meal" required>
                                         <div class="invalid-feedback">
-                                            Please Provide a meal
+                                            Please provide a meal
 
                                         </div>
                                     </div>
@@ -365,7 +372,7 @@
                                     <div class="form-group purple-border">
                                         <textarea id="mealdesc" name="descmeal" class="form-control rounded-0" rows="8" placeholder="Meal description" required></textarea>
                                         <div class="invalid-feedback">
-                                            Please Provide meal description
+                                            Please provide meal description
                                         </div>
                                     </div>
 
@@ -382,11 +389,11 @@
                                             </div>
                                             <div class="custom-file">
                                                 <div class="myDiv">
-                                                    <input type="file" class="custom-file-input" id="mealdescinput" aria-describedby="inputGroupFile" name="fchooseprofile" accept="image/*" required onchange="readFileMealDesc()">
+                                                    <input type="file" class="custom-file-input" id="mealdescinput" aria-describedby="inputGroupFile" name="fchooseprofile" accept="image/*" required onchange="convertImgToBase64(this,'mealImageBanner')">
                                                     <label class="custom-file-label" for="mealdescinput">Choose
                                                         file</label>
                                                     <div class="invalid-feedback"><br>
-                                                        Please Select an image
+                                                        Please select an image
                                                     </div>
                                                 </div>
 
@@ -394,6 +401,7 @@
                                         </div>
 
                                     </div>
+                                    <p>Akhilesh</p>
                                 </div>
 
                                 <br>
@@ -409,7 +417,7 @@
 
                             <div class="col-sm-4">
                                 <div class="float-right">
-                                    <img id="imageMealDesc" src="" alt="" class="img-thumbnail">
+                                    <img id="mealImageBanner" src="" alt="" class="img-thumbnail">
                                 </div>
                             </div>
 
@@ -434,14 +442,14 @@
 
                                         <input type="text" class="form-control" id="customername" name="cust_name" placeholder="Customer name" required>
                                         <div class="invalid-feedback">
-                                            Please Provide a customer name
+                                            Please provide a customer name
 
                                         </div>
                                     </div>
 
                                     <textarea class="form-control rounded-0" id="custDesc" name="cust_desc" rows="6" placeholder="Customer description" required></textarea>
                                     <div class="invalid-feedback">
-                                        Please Provide customer description
+                                        Please provide customer description
 
                                     </div>
                                     <br>
@@ -460,11 +468,11 @@
                                             </div>
                                             <div class="custom-file">
                                                 <div class="myDiv">
-                                                    <input type="file" class="custom-file-input" id="custprofileinput" aria-describedby="inputGroupFile" name="fchooseprofile" accept="image/*" required onchange="readFileCust()">
+                                                    <input type="file" class="custom-file-input" id="custprofileinput" aria-describedby="inputGroupFile" name="fchooseprofile" accept="image/*" required onchange="convertImgToBase64(this,'imageCustStories')">
                                                     <label class="custom-file-label" for="custprofileinput">Choose
                                                         file</label>
                                                     <div class="invalid-feedback"><br>
-                                                        Please Select an image
+                                                        Please select an image
                                                     </div>
 
                                                 </div>
@@ -748,13 +756,14 @@
 
     <!-- Page level plugin JavaScript-->
     <script src="vendor/chart.js/Chart.min.js"></script>
-    <script src="vendor/datatables/jquery.dataTables.js"></script>
+
     <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin.min.js"></script>
     <script src="js/validate.js"></script>
-    <script src="js/common.js"></script>
+    <script src="vendor/datatables/jquery.dataTables.js"></script>
+    
 
     <!-- <script src="js/bootstrap-validate.js"></script> -->
 
@@ -762,6 +771,8 @@
     <script src="js/demo/datatables-demo.js"></script>
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
     <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>

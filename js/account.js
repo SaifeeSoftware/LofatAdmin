@@ -1,9 +1,10 @@
+
 function loginForm(){
 
    
     var username= $("#username").val();
-    var pass1=$("#pass1").val();
-    var accountdata="username=" + username +  "&password=" + pass1 + "&grant_type=password";
+    var pass=$("#pass").val();
+    var accountdata="username=" + username +  "&password=" + pass + "&grant_type=password";
     sendXhrHttpRequest("/oauth/token", accountdata, loginSuccess, loginError);
     
 
@@ -12,6 +13,12 @@ function loginForm(){
 function loginSuccess(result){
 
     debugger;
+   
+    localStorage.setItem('lofatadminaccesstoken',JSON.stringify(result));
+
+
+  
+
 }
 
 function loginError(err){
