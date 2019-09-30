@@ -294,10 +294,11 @@ $(document).ready(function() {
 
 var plantemplate = {
     "plan": "",
-
-
+    "plandesc" : "",
+    "planimg" : [],
     "meals": []
 };
+
 var mealtemplate = {
     "name": "",
     "description": "",
@@ -313,7 +314,7 @@ function addPlan() {
 
         console.log(data);
         debugger;
-        sendRequest("plan",data,addPlanSuccess,addPlanErr,"post");
+        sendRequest("plan",plantemplate,addPlanSuccess,addPlanErr,"post");
     }
 }
 
@@ -342,9 +343,7 @@ function addMeal() {
 
         $.each(data, function(i, v) {
             if (v.plan === addSelectPlan) {
-
-
-
+                
                 v.meals.push(mealtemplate)
                 return;
             }
