@@ -6,6 +6,8 @@ function sendRequest(endpoint, jsondata, succFunc, errorFunc, requestType) {
     var bearertoken = JSON.parse(localStorage.getItem('lofatadminaccesstoken'));
 
 	$.ajax({
+		
+
 		url: apiurl + endpoint,
 
 		data: JSON.stringify(jsondata),
@@ -17,9 +19,11 @@ function sendRequest(endpoint, jsondata, succFunc, errorFunc, requestType) {
 		dataType: "json",
 
 		success: function(result) {
+			debugger;
 			succFunc(result);
 		},
 		error: function(err) {
+			debugger;
 			errorFunc(err);
 		},
 
