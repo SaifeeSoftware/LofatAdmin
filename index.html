@@ -12,8 +12,8 @@
 
 
     <title>Lofat Admin</title>
-    <link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="/examples/css/form-style.css">
+    <!-- <link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" /> -->
+    <!-- <link rel="stylesheet" href="/examples/css/form-style.css"> -->
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
@@ -241,8 +241,7 @@
 
 
                                                     <div class="invalid-feedback">
-                                                        <br>
-                                                        Please select an image
+                                                        <br> Please select an image
                                                     </div>
                                                 </div>
 
@@ -277,7 +276,7 @@
 
                         <form id="addNewPlan" name="adminForm" class="needs-validation" novalidate>
                             <div class="col-sm-6">
-                                <div class="col-xl-7 col-sm-4 mb-1">
+                                <div class="col-sm-12">
                                     <div class="form-group">
                                         <label for="plan">Add Plan:</label>
 
@@ -314,8 +313,7 @@
                                                 <div class="myDiv">
                                                     <input type="file" class="custom-file-input" id="addplaninput" aria-describedby="inputGroupFile" name="fchooseprofile" accept="image/*" required onchange="convertImgToBase64(this,'planImageBanner')">
                                                     <label class="custom-file-label" for="addplaninput">Choose file</label>
-                                                    <div class="invalid-feedback"><br>
-                                                        Please select an image
+                                                    <div class="invalid-feedback"><br> Please select an image
                                                     </div>
 
                                                 </div>
@@ -324,7 +322,7 @@
 
                                     </div>
                                 </div>
-                                
+
                                 <br>
                                 <div class="col-xl-3 col-sm-6 mb-3"><button type="submit" class="btn btn-info">Submit</button></div>
                                 <br>
@@ -340,12 +338,12 @@
                         <div class="card-footer small text-muted"></div>
                     </div>
 
-                    
+
                     <div class="card mb-3">
                         <div class="card-header">Add Meal </div> <br>
                         <form id="addPlanMeadDesc" name="adminForm" class="needs-validation" novalidate>
                             <div class="col-sm-6">
-                                <div class="col-xl-8 col-sm-3 mb-1">
+                                <div class="col-sm-12">
 
                                     <div class="form-group">
 
@@ -392,8 +390,7 @@
                                                     <input type="file" class="custom-file-input" id="mealdescinput" aria-describedby="inputGroupFile" name="fchooseprofile" accept="image/*" required onchange="convertImgToBase64(this,'mealImageBanner')">
                                                     <label class="custom-file-label" for="mealdescinput">Choose
                                                         file</label>
-                                                    <div class="invalid-feedback"><br>
-                                                        Please select an image
+                                                    <div class="invalid-feedback"><br> Please select an image
                                                     </div>
                                                 </div>
 
@@ -472,8 +469,7 @@
                                                     <input type="file" class="custom-file-input" id="custprofileinput" aria-describedby="inputGroupFile" name="fchooseprofile" accept="image/*" required onchange="convertImgToBase64(this,'imageCustStories')">
                                                     <label class="custom-file-label" for="custprofileinput">Choose
                                                         file</label>
-                                                    <div class="invalid-feedback"><br>
-                                                        Please select an image
+                                                    <div class="invalid-feedback"><br> Please select an image
                                                     </div>
 
                                                 </div>
@@ -588,9 +584,9 @@
                                                 <td>CSMT</td>
                                                 <td>Biryani</td>
                                                 <td>25/05/2019</t>
-                                                <td>24/06/2019</td>
-                                                <td>29</td>
-                                                <td>Wholesome Membership</td>
+                                                    <td>24/06/2019</td>
+                                                    <td>29</td>
+                                                    <td>Wholesome Membership</td>
                                             </tr>
                                             <tr>
                                                 <td>Bhola</td>
@@ -750,33 +746,37 @@
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
 
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
     <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <script src="vendor/datatables/jquery.dataTables.js"></script>
+
+    <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+
+
+
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
 
     <!-- Page level plugin JavaScript-->
     <script src="vendor/chart.js/Chart.min.js"></script>
 
-    <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+
 
     <!-- Custom scripts for all pages-->
+
     <script src="js/sb-admin.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/account.js"></script>
     <script src="js/validate.js"></script>
-    <script src="vendor/datatables/jquery.dataTables.js"></script>
-    
 
     <!-- <script src="js/bootstrap-validate.js"></script> -->
-
     <!-- Demo scripts for this page-->
     <script src="js/demo/datatables-demo.js"></script>
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
-    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
 
 </body>
 
