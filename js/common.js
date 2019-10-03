@@ -7,19 +7,23 @@ function sendRequest(endpoint, jsondata, succFunc, errorFunc, requestType) {
     $.ajax({
         url: apiurl + endpoint,
         data: JSON.stringify(jsondata),
-        contentType: "application/json; charset=utf-8",
         type: requestType,
         dataType: "json",
-        beforeSend: function(xhr) {
-            xhr.setRequestHeader("Authorization", "Bearer " + JSON.parse(bearertoken).access_token);
+        headers: {
+            "Authorization": "Bearer " + JSON.parse(bearertoken).access_token,
+            "Content-Type": "application/json"
         },
         success: function(result) {
             debugger;
-            succFunc(result);
+            if (succFunc) {
+                succFunc(result);
+            }
         },
         error: function(err) {
             debugger;
-            errorFunc(err);
+            if (errorFunc) {
+                errorFunc(err);
+            }
         }
     });
 }

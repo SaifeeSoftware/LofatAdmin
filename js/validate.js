@@ -88,6 +88,8 @@ function Validate(txt) {
                         case "addNewPlan":
 
                             addPlan();
+                            event.preventDefault();
+                            event.stopPropagation();
                             break;
 
                         case "addPlanMeadDesc":
@@ -249,9 +251,10 @@ $(document).ready(function() {
 });
 
 var plantemplate = {
+    "Id": 0,
     "Name": "",
     "Description": "",
-    "BannerPic": []
+    "BannerPic": ""
 };
 
 var mealtemplate = {
@@ -271,8 +274,9 @@ function addPlan() {
 
         console.log(data);
         debugger;
-        sendXhrHttpRequest("/api/plans/AddPlan", plantemplate, addPlanSuccess, addPlanErr, "POST");
-        //sendRequest("plans/AddPlan", plantemplate, addPlanSuccess, addPlanErr, "POST");
+        //sendXhrHttpRequest("/api/plans/AddPlan", plantemplate, addPlanSuccess, addPlanErr, "POST");
+        sendRequest("plans/AddPlan", plantemplate, addPlanSuccess, addPlanErr, "POST");
+
     }
 }
 
