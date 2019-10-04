@@ -87,7 +87,9 @@ function Validate(txt) {
 
                         case "addNewPlan":
 
-                            addPlann();
+                            addPlan();
+                            event.preventDefault();
+                            event.stopPropagation();
                             break;
 
                         case "addPlanMeadDesc":
@@ -167,54 +169,10 @@ function banner() {
 }
 
 
-var plandata = {
-
-    "plans": [{
-            "plan": "Veg",
-            "addplaninput": "C:\MyPic\abc.jpg"
-        },
-        {
-            "plan": "Non-Veg",
-            "addplaninput": "C:\MyPic\abd.jpg"
-        },
-        {
-            "plan": "Royal",
-            "addplaninput": "C:\MyPic\abe.jpg"
-        }
-    ]
-};
-
-var addPlanTemplate = {
-    "plan": "",
-    "addplaninput": ""
-};
-
-function addPlann() {
-    var plan = $("#plan").val();
-
-
-    if (plan !== "") {
-        addPlanTemplate.plan = plan;
-        addPlanTemplate.addplaninput = stringPath;
-
-
-        plandata.plans.push(addPlanTemplate)
-
-    }
-
-
-}
-
-
-
-
-
-
-var data = [
-    {
+var data = [{
         "plan": "Wholesome Membership",
-        "plandesc" : "",
-        "planimg" : [],
+        "plandesc": "",
+        "planimg": [],
         "meals": [{
                 "name": "Biryani",
                 "description": "Royal Biryani",
@@ -277,11 +235,11 @@ var data = [
 ];
 
 function populateSelect() {
-    
+
     var ele = $('#ddSelectPlan');
     for (var i = 0; i < data.length; i++) {
 
-        $(ele).html($(ele).html() + '<option value>' + data[i]['plan'] + '</option>' );
+        $(ele).html($(ele).html() + '<option value>' + data[i]['plan'] + '</option>');
 
     }
 }
@@ -293,38 +251,47 @@ $(document).ready(function() {
 });
 
 var plantemplate = {
-    "plan": "",
-    "plandesc" : "",
-    "planimg" : [],
-    "meals": []
+    "Id": 0,
+    "Name": "",
+    "Description": "",
+    "BannerPic": ""
 };
 
 var mealtemplate = {
-    "name": "",
-    "description": "",
-    "image": "",
-}
+    "Id": 0,
+    "PlanId": 0,
+    "Name": "string",
+    "Description": "string",
+    "MealPic": "string",
+    "Category": "string"
+  };
 
 function addPlan() {
     var plan = $("#plan").val();
-
+    var plandesc = $("#planDesc").val();
     if (plan !== "") {
-        plantemplate.plan = plan;
+        plantemplate.Name = plan;
+        plantemplate.Description = plandesc;
+        plantemplate.BannerPic = stringPath;
         data.push(plantemplate);
 
         console.log(data);
         debugger;
-        sendRequest("plan",plantemplate,addPlanSuccess,addPlanErr,"post");
+        //sendXhrHttpRequest("/api/plans/AddPlan", plantemplate, addPlanSuccess, addPlanErr, "POST");
+        sendRequest("plans/AddPlan", plantemplate, addPlanSuccess, addPlanErr, "POST");
+
     }
 }
 
-function addPlanSuccess(result)
-{
+function addPlanSuccess(result) {
+    debugger;
+				var plandemo = $("#plandemo").val();
+
+				$( "p" ).html(result);
 
 }
 
-function addPlanErr(err)
-{
+function addPlanErr(err) {
 
 }
 
@@ -336,21 +303,45 @@ function addMeal() {
     var addSelectPlan = $("#ddSelectPlan option:selected").text();
 
     if (meal !== "") {
-        mealtemplate.mealdesc = mealdesc;
-        mealtemplate.meal = meal;
-        mealtemplate.image = stringPath;
-
+        mealtemplate.Name=meal;
+        mealtemplate.Description=mealdesc;
+        mealtemplate.MealPic=stringPath;
+        mealtemplate.Category=addSelectPlan;
+        
+        
+        
+        
 
         $.each(data, function(i, v) {
             if (v.plan === addSelectPlan) {
-                
+
                 v.meals.push(mealtemplate)
                 return;
+                
             }
+           
         });
+        debugger;
+        //sendXhrHttpRequest("/api/meals/AddMeal", plantemplate, addMealSuccess, addMealErr, "POST");
+        sendRequest("meals/AddMeal", mealtemplate, addMealSuccess, addMealErr, "POST");
+        
     }
 
 }
+
+function addMealSuccess(result) {
+    debugger;
+				var plandemo = $("#mealdemo").val();
+
+				$( "p" ).html(result);
+
+}
+
+function addMealErr(err) {
+
+}
+
+
 
 
 
@@ -413,11 +404,11 @@ function addCustomerdata() {
 
 
 
-$("#custprofileinput","#sliderinput","#mealdescinput", "#addplaninput").on("change", convertImgToBase64);
+$("#custprofileinput", "#sliderinput", "#mealdescinput", "#addplaninput").on("change", convertImgToBase64);
 
 
 function convertImgToBase64(inputFile, imageid) {
-    
+
     if (inputFile.files && inputFile.files[0]) {
 
         var FR = new FileReader();
@@ -439,5 +430,3 @@ function convertImgToBase64(inputFile, imageid) {
     }
 
 }
-
-
