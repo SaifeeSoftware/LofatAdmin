@@ -530,8 +530,8 @@ mark,
     border-radius: 0.25rem;
     max-width: 100%;
     height: 140px;
-    width:140px;
-    display:block;
+    width: 140px;
+    display: block;
 }
 
 .figure {
@@ -996,7 +996,7 @@ pre code {
         max-width: 25%;
     }
     .col-sm-4 {
-        float:left;
+        float: left;
         -webkit-box-flex: 0;
         -ms-flex: 0 0 33.33333%;
         flex: 0 0 33.33333%;
@@ -1009,7 +1009,7 @@ pre code {
         max-width: 41.66667%;
     }
     .col-sm-6 {
-        float:left;
+        float: left;
         -webkit-box-flex: 0;
         -ms-flex: 0 0 50%;
         flex: 0 0 50%;
@@ -2258,7 +2258,6 @@ textarea.form-control {
     height: auto;
     width: 420px;
 }
-
 
 .form-group {
     margin-bottom: 1rem;
@@ -11221,11 +11220,9 @@ body.sidebar-toggled footer.sticky-footer {
     width: 100%;
 }
 
-.myDiv{
-    width:420px;
-
-    }
-
+.myDiv {
+    width: 420px;
+}
 
 @media (min-width: 768px) {
     body.sidebar-toggled footer.sticky-footer {
@@ -11233,16 +11230,14 @@ body.sidebar-toggled footer.sticky-footer {
     }
 }
 
-body
-{
-  font-family: Arial, Sans-serif;
-}
-label.error
-{
-color:red;
-font-family:verdana, Helvetica;
+body {
+    font-family: Arial, Sans-serif;
 }
 
+label.error {
+    color: red;
+    font-family: verdana, Helvetica;
+}
 
 .hide {
     display: none;
@@ -11257,37 +11252,40 @@ textarea,
     width: 420px;
 }
 
-
 input[type="file"] {
     width: 420px;
 }
 
 body {
-    padding-top:0px;
+    padding-top: 0px;
 }
+
 .imageupload {
     margin: 20px 0;
 }
 
-           
 fieldset {
-    border: thin solid #ccc; 
+    border: thin solid #ccc;
     border-radius: 4px;
     padding: 20px;
     padding-left: 40px;
     background: #fbfbfb;
 }
+
 legend {
-   color: #678;
+    color: #678;
 }
+
 .form-control {
     width: 95%;
 }
+
 label small {
     color: #678 !important;
 }
+
 span.req {
-    color:maroon;
+    color: maroon;
     font-size: 112%;
 }
 
@@ -11299,17 +11297,37 @@ span.valid {
     color: green;
 }
 
-article, aside, figure, footer, header, hgroup, 
-  menu, nav, section { display: block; }
+article,
+aside,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
 
-  .element {
+.element {
     @include float-left;
-  }
-  .another-element {
-    @include float-right;
-  }
-  .one-more {
-    @include float-none;
-  }
+}
 
- 
+.another-element {
+    @include float-right;
+}
+
+.one-more {
+    @include float-none;
+}
+
+.errorResp,
+.successResp {
+    margin-top: 5px;
+    color: red;
+    font-weight: 600;
+}
+
+.successResp {
+    color: green;
+}

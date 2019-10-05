@@ -1,17 +1,18 @@
-
 function sendRequest(endpoint, jsondata, succFunc, errorFunc, requestType) {
     debugger;
-    var apiurl = "http://localhost:8045/api/";
+    var apiurl = "http://localhost:8045/api";
 
     var bearertoken = JSON.parse(localStorage.getItem('lofatadminaccesstoken'));
-
+    if (!bearertoken.hasOwnProperty("access_token") && bearertoken["access_token"] == "") {
+        window.location.href = "./login.html";
+    }
     $.ajax({
         url: apiurl + endpoint,
         data: JSON.stringify(jsondata),
         type: requestType,
         dataType: "json",
         headers: {
-            "Authorization": "Bearer " + JSON.parse(bearertoken).access_token,
+            "Authorization": "Bearer " + bearertoken.access_token,
             "Content-Type": "application/json"
         },
         success: function(result) {
@@ -33,7 +34,6 @@ function sendXhrHttpRequest(endpoint, dataPayload, succFunct, errorFunct, reques
 
     debugger;
     var apiurl = "http://localhost:8045";
-    var bearertoken = JSON.parse(localStorage.getItem('lofatadminaccesstoken'));
     var xhr = new XMLHttpRequest();
     xhr.withCredentials = true;
     var url = apiurl + endpoint;
@@ -67,8 +67,11 @@ function sendXhrHttpRequest(endpoint, dataPayload, succFunct, errorFunct, reques
     xhr.open(requestType, url);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.setRequestHeader("Accept", "application/json");
-    xhr.setRequestHeader('Authorization', 'Bearer ' + JSON.parse(bearertoken).access_token);
     debugger;
     xhr.send(dataPayload);
 
+}
+
+function resetform(formName) {
+    $("#" + formName).trigger("reset");
 }
