@@ -1,28 +1,27 @@
+function loginForm() {
 
-function loginForm(){
 
-   
-    var username= $("#username").val();
-    var pass=$("#pass").val();
-    var accountdata="username=" + username +  "&password=" + pass + "&grant_type=password";
-    sendXhrHttpRequest("/oauth/token", accountdata, loginSuccess, loginError);
-    
+    var username = $("#username").val();
+    var pass = $("#pass").val();
+    var accountdata = "username=" + username + "&password=" + pass + "&grant_type=password";
+    sendXhrHttpRequest("/oauth/token", accountdata, loginSuccess, loginError, "POST");
+
 
 }
 
-function loginSuccess(result){
+function loginSuccess(result) {
 
     debugger;
-   
-    localStorage.setItem('lofatadminaccesstoken',JSON.stringify(result));
+
+    localStorage.setItem('lofatadminaccesstoken', JSON.stringify(result));
 
 
-  
+
 
 }
 
-function loginError(err){
-    
+function loginError(err) {
+
     debugger;
 
 }

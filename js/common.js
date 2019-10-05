@@ -1,3 +1,4 @@
+
 function sendRequest(endpoint, jsondata, succFunc, errorFunc, requestType) {
     debugger;
     var apiurl = "http://localhost:8045/api/";
@@ -16,7 +17,7 @@ function sendRequest(endpoint, jsondata, succFunc, errorFunc, requestType) {
         success: function(result) {
             debugger;
             if (succFunc) {
-				succFunc(result);
+                succFunc(result);
             }
         },
         error: function(err) {
@@ -28,11 +29,11 @@ function sendRequest(endpoint, jsondata, succFunc, errorFunc, requestType) {
     });
 }
 
-function sendXhrHttpRequest(endpoint, dataPayload, succFunct, errorFunct) {
+function sendXhrHttpRequest(endpoint, dataPayload, succFunct, errorFunct, requestType) {
 
     debugger;
     var apiurl = "http://localhost:8045";
-
+    var bearertoken = JSON.parse(localStorage.getItem('lofatadminaccesstoken'));
     var xhr = new XMLHttpRequest();
     xhr.withCredentials = true;
     var url = apiurl + endpoint;
@@ -63,10 +64,11 @@ function sendXhrHttpRequest(endpoint, dataPayload, succFunct, errorFunct) {
 
     });
 
-    xhr.open("POST", url);
+    xhr.open(requestType, url);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.setRequestHeader("Accept", "application/json");
-
+    xhr.setRequestHeader('Authorization', 'Bearer ' + JSON.parse(bearertoken).access_token);
+    debugger;
     xhr.send(dataPayload);
 
 }
