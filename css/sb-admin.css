@@ -11252,13 +11252,14 @@ input#plan,
 input#meal,
 input#customername,
 textarea,
+#ddSelectCat,
 #ddSelectPlan {
     width: 420px;
 }
 
 
 input[type="file"] {
-    width: 310px;
+    width: 420px;
 }
 
 body {

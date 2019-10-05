@@ -79,9 +79,6 @@ function Validate(txt) {
                     switch (form.id) {
 
                         case "addBanner":
-
-
-
                             banner();
                             break;
 
@@ -115,9 +112,12 @@ function Validate(txt) {
 
 
 $('#sliderinput').on('change', function() {
+    var fileName = $(this).val();
 
+    $(this).next('.custom-file-label').html(fileName);
+})
 
-
+$('#introinput').on('change', function() {
     var fileName = $(this).val();
 
     $(this).next('.custom-file-label').html(fileName);
@@ -234,6 +234,16 @@ var data = [{
 
 ];
 
+var catData = [{
+    "categories" :  "Breakfast"
+},
+{
+    "categories" : "Lunch"
+},
+{
+    "categories" : "Dinner"
+    }];
+
 function populateSelect() {
 
     var ele = $('#ddSelectPlan');
@@ -244,11 +254,29 @@ function populateSelect() {
     }
 }
 
+function populateSelectCat() {
+
+    var ele = $('#ddSelectCat');
+    for (var i = 0; i < catData.length; i++) {
+        
+        $(ele).html($(ele).html() + '<option value>' + catData[i]['categories'] + '</option>');
+
+    }
+}
 
 
 $(document).ready(function() {
     populateSelect();
+    populateSelectCat();
+
+    $("#custTableLink").click(function(e) {
+        debugger;
+        e.preventDefault();
+        var aid = $(this).attr("href");
+        $('html,body').animate({scrollTop: $(aid).offset().top},'slow');
+    });
 });
+
 
 var plantemplate = {
     "Id": 0,
@@ -268,10 +296,13 @@ var mealtemplate = {
 
 function addPlan() {
     var plan = $("#plan").val();
-    var plandesc = $("#planDesc").val();
+    debugger;
+    var ckplandesc = CKEDITOR.instances.planDesc.getData();
+    
+
     if (plan !== "") {
         plantemplate.Name = plan;
-        plantemplate.Description = plandesc;
+        plantemplate.Description = ckplandesc;
         plantemplate.BannerPic = stringPath;
         data.push(plantemplate);
 
@@ -299,6 +330,8 @@ function addPlanErr(err) {
 
 function addMeal() {
     var meal = $("#meal").val();
+    debugger;
+    var mealdesc = CKEDITOR.instances.mealdesc.getData();
     var mealdesc = $("#mealdesc").val();
     var addSelectPlan = $("#ddSelectPlan option:selected").text();
 
@@ -404,7 +437,7 @@ function addCustomerdata() {
 
 
 
-$("#custprofileinput", "#sliderinput", "#mealdescinput", "#addplaninput").on("change", convertImgToBase64);
+$("#custprofileinput", "#sliderinput", "#mealdescinput", "#addplaninput","#introinput").on("change", convertImgToBase64);
 
 
 function convertImgToBase64(inputFile, imageid) {
@@ -430,3 +463,6 @@ function convertImgToBase64(inputFile, imageid) {
     }
 
 }
+
+
+

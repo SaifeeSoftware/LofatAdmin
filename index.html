@@ -23,7 +23,7 @@
     <!-- Custom styles for this template-->
     <link href="css/sb-admin.css" rel="stylesheet">
 
-
+    <script src="https://cdn.ckeditor.com/4.13.0/standard-all/ckeditor.js"></script>
 
 
 
@@ -39,56 +39,8 @@
             <i class="fas fa-bars"></i>
         </button>
 
-        <!-- Navbar Search -->
-        <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                <div class="input-group-append">
-                    <button class="btn btn-primary" type="button">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>
-            </div>
-        </form>
-
-        <!-- Navbar -->
-        <ul class="navbar-nav ml-auto ml-md-0">
-            <li class="nav-item dropdown no-arrow mx-1">
-                <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-bell fa-fw"></i>
-                    <span class="badge badge-danger">9+</span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown no-arrow mx-1">
-                <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-envelope fa-fw"></i>
-                    <span class="badge badge-danger">7</span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown no-arrow">
-                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-user-circle fa-fw"></i>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                    <a class="dropdown-item" href="#">Settings</a>
-                    <a class="dropdown-item" href="#">Activity Log</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
-                </div>
-            </li>
-        </ul>
+       
+        
 
     </nav>
 
@@ -128,6 +80,34 @@
                     <i class="fas fa-fw fa-table"></i>
                     <span>Tables</span></a>
             </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="BannerImage.html">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Manage Banner Image</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="introImageText.html">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Manage Intro Image and Text</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="addPlan.html">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Manage Add Plan</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="addMeal.html">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Manage Add Meal</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="addCustData.html">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Manage Customer Stories</span></a>
+            </li>
+
+
         </ul>
 
         <div id="content-wrapper">
@@ -166,7 +146,9 @@
                                         </div>
                                         <div class="mr-5">65 Active Subscription</div>
                                     </div>
-                                    <a class="card-footer text-white clearfix small z-1" href="#">
+                                   
+
+                                    <a id="custTableLink" class="card-footer text-white clearfix small z-1" href="#custDataTable">
                                         <span class="float-left">View Details</span>
                                         <span class="float-right">
                                             <i class="fas fa-angle-right"></i>
@@ -190,22 +172,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="col-xl-3 col-sm-6 mb-3">
-                                <div class="card text-white bg-danger o-hidden h-100">
-                                    <div class="card-body">
-                                        <div class="card-body-icon">
-                                            <i class="fas fa-fw fa-life-ring"></i>
-                                        </div>
-                                        <div class="mr-5">13 New Tickets!</div>
-                                    </div>
-                                    <a class="card-footer text-white clearfix small z-1" href="#">
-                                        <span class="float-left">View Details</span>
-                                        <span class="float-right">
-                                            <i class="fas fa-angle-right"></i>
-                                        </span>
-                                    </a>
-                                </div>
-                            </div>
+                            
 
                         </div>
                     </div>
@@ -214,291 +181,7 @@
 
                 <div class="container">
 
-                    <div class="card mb-3">
-                        <div class="card-header">Select the latest banner image</div>
-                        <br>
-
-
-                        <form id="addBanner" name="adminForm" class="needs-validation" novalidate>
-                            <div class="col-sm-6">
-
-
-                                <div class="col-sm-10">
-                                    <div class="myDiv">
-                                        <div class="input-group">
-
-                                            <div class="input-group-prepend">
-
-                                                <span class="input-group-text" id="inputGroupFileG">Upload</span>
-                                            </div>
-
-                                            <div class="custom-file">
-                                                <div class="myDiv">
-                                                    <input type="file" class="custom-file-input" id="sliderinput" aria-describedby="inputGroupFileG" name="fchoose" accept="image/*" required onchange="convertImgToBase64(this,'imageBanner')">
-
-
-                                                    <label class="custom-file-label" for="sliderinput">Choose file</label>
-
-
-                                                    <div class="invalid-feedback">
-                                                        <br> Please select an image
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <br>
-
-                                <div class="col-xl-3 col-sm-6 mb-3"><button type="submit" value="Submit" class="btn btn-info">Submit</button>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-4">
-                                <div class="float-right">
-                                    <img id="imageBanner" src="" alt="" class="img-thumbnail">
-                                </div>
-                            </div>
-
-                        </form>
-
-                        <br>
-                        <div class="card-footer small text-muted"></div>
-                    </div>
-
-
-
-
-                    <div class="card mb-3">
-
-                        <div class="card-header"> Add New Plan </div> <br>
-
-                        <form id="addNewPlan" name="adminForm" class="needs-validation" novalidate>
-                            <div class="col-sm-6">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <label for="plan">Add Plan:</label>
-
-                                        <input type="text" class="form-control" name="nameplan" id="plan" placeholder="Add plan" required>
-
-                                        <div class="invalid-feedback">
-                                            Please provide a new plan
-
-                                        </div>
-
-                                    </div>
-
-                                    <textarea class="form-control rounded-0" id="planDesc" name="plan_desc" rows="6" placeholder="Plan description" required></textarea>
-                                    <div class="invalid-feedback">
-                                        Please provide plan description
-
-                                    </div>
-                                    <br>
-
-                                </div>
-
-
-
-                                <div class="col-sm-10">
-
-                                    <div class="myDiv">
-
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-
-                                                <span class="input-group-text" id="inputGroupFile">Upload</span>
-                                            </div>
-                                            <div class="custom-file">
-                                                <div class="myDiv">
-                                                    <input type="file" class="custom-file-input" id="addplaninput" aria-describedby="inputGroupFile" name="fchooseprofile" accept="image/*" required onchange="convertImgToBase64(this,'planImageBanner')">
-                                                    <label class="custom-file-label" for="addplaninput">Choose file</label>
-                                                    <div class="invalid-feedback"><br> Please select an image
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                                <br>
-                                <div class="col-xl-3 col-sm-6 mb-3"><button type="submit" class="btn btn-info">Submit</button></div>
-                               <p id="plandemo"></p>
-                                <br>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="float-right">
-                                    <img id="planImageBanner" src="" alt="" class="img-thumbnail">
-
-                                </div>
-                            </div>
-
-                        </form>
-                        <div class="card-footer small text-muted"></div>
-                    </div>
-
-
-                    <div class="card mb-3">
-                        <div class="card-header">Add Meal </div> <br>
-                        <form id="addPlanMeadDesc" name="adminForm" class="needs-validation" novalidate>
-                            <div class="col-sm-6">
-                                <div class="col-sm-12">
-
-                                    <div class="form-group">
-
-                                        <select class="custom-select browser-default" id="ddSelectPlan" required>
-                                            <option value="">Please select </option>
-
-                                        </select>
-                                        <div class="invalid-feedback">Please select any one of above </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-xl-7 col-sm-4 mb-1">
-
-                                    <div class="form-group">
-                                        <label for="meal">Add Meal:</label>
-
-                                        <input type="text" class="form-control" id="meal" name="namemeal" placeholder="Add meal" required>
-                                        <div class="invalid-feedback">
-                                            Please provide a meal
-
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group purple-border">
-                                        <textarea id="mealdesc" name="descmeal" class="form-control rounded-0" rows="8" placeholder="Meal description" required></textarea>
-                                        <div class="invalid-feedback">
-                                            Please provide meal description
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <div class="col-sm-10">
-
-                                    <div class="myDiv">
-
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-
-                                                <span class="input-group-text" id="inputGroupFile">Upload</span>
-                                            </div>
-                                            <div class="custom-file">
-                                                <div class="myDiv">
-                                                    <input type="file" class="custom-file-input" id="mealdescinput" aria-describedby="inputGroupFile" name="fchooseprofile" accept="image/*" required onchange="convertImgToBase64(this,'mealImageBanner')">
-                                                    <label class="custom-file-label" for="mealdescinput">Choose
-                                                        file</label>
-                                                    <div class="invalid-feedback"><br> Please select an image
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    
-                                </div>
-
-                                <br>
-                                <div class="col-xl-3 col-sm-6 mb-3">
-
-                                    <button type="submit" id="submit" class="btn btn-info">Submit</button>
-                                    <label id="result"></label>
-                                    <p id="mealdemo"></p>
-                                </div>
-                                <br>
-
-                            </div>
-
-
-                            <div class="col-sm-4">
-                                <div class="float-right">
-                                    <img id="mealImageBanner" src="" alt="" class="img-thumbnail">
-                                </div>
-                            </div>
-
-                        </form>
-
-                        <div class="card-footer small text-muted"></div>
-                    </div>
-
-
-
-                    <div class="card mb-3">
-                        <div class="card-header">Customer Stories
-                        </div>
-                        <br>
-                        <form id="addCustdata" name="adminForm" class="needs-validation" novalidate>
-                            <div class="col-sm-6">
-
-
-                                <div class="col-xl-7 col-sm-4 mb-1">
-                                    <div class="form-group">
-                                        <label for="customername">Customer Name:</label>
-
-                                        <input type="text" class="form-control" id="customername" name="cust_name" placeholder="Customer name" required>
-                                        <div class="invalid-feedback">
-                                            Please provide a customer name
-
-                                        </div>
-                                    </div>
-
-                                    <textarea class="form-control rounded-0" id="custDesc" name="cust_desc" rows="6" placeholder="Customer description" required></textarea>
-                                    <div class="invalid-feedback">
-                                        Please provide customer description
-
-                                    </div>
-                                    <br>
-                                </div>
-
-
-
-                                <div class="col-sm-10">
-
-                                    <div class="myDiv">
-
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-
-                                                <span class="input-group-text" id="inputGroupFile">Upload</span>
-                                            </div>
-                                            <div class="custom-file">
-                                                <div class="myDiv">
-                                                    <input type="file" class="custom-file-input" id="custprofileinput" aria-describedby="inputGroupFile" name="fchooseprofile" accept="image/*" required onchange="convertImgToBase64(this,'imageCustStories')">
-                                                    <label class="custom-file-label" for="custprofileinput">Choose
-                                                        file</label>
-                                                    <div class="invalid-feedback"><br> Please select an image
-                                                    </div>
-
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <br>
-                                <div class="col-xl-3 col-sm-6 mb-3"><button type="submit" class="btn btn-info">Submit</button>
-                                </div>
-
-                                <br>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="float-right">
-                                    <img id="imageCustStories" src="" alt="" class="img-thumbnail">
-
-
-                                </div>
-
-                            </div>
-                        </form>
-                        <div class="card-footer small text-muted"></div>
-                    </div>
-
-
+                    
                     <div class="col-mb-3">
                         <div class="row">
                             <div class="col-lg-4">
@@ -534,7 +217,7 @@
 
                     <div class="col-mb-3">
                         <div class="card mb-3">
-                            <div class="card-header">
+                            <div class="card-header" id="custDataTable">
 
                                 Customer Data Table </div>
                             <div class="card-body">
@@ -544,7 +227,7 @@
                                             <tr>
                                                 <th>Customer Name</th>
                                                 <th>Location</th>
-                                                <th>Dish</th>
+                                               
                                                 <th>Start date</th>
                                                 <th>End date</th>
                                                 <th>Days Remaining</th>
@@ -556,7 +239,7 @@
                                             <tr>
                                                 <td>Amit</td>
                                                 <td>Andheri</td>
-                                                <td>Pizza</td>
+                                               
                                                 <td>12/08/2019</td>
                                                 <td>11/09/2019</td>
                                                 <td>25</td>
@@ -565,7 +248,7 @@
                                             <tr>
                                                 <td>Aman</td>
                                                 <td>Jogeshwari</td>
-                                                <td>Burger</td>
+                                                
                                                 <td>17/08/2019</td>
                                                 <td>16/09/2019</td>
                                                 <td>20</td>
@@ -574,7 +257,7 @@
                                             <tr>
                                                 <td>Ananya</td>
                                                 <td>Madh</td>
-                                                <td>Sandwich</td>
+                                                
                                                 <td>15/08/2019</td>
                                                 <td>14/09/2019</td>
                                                 <td>17</td>
@@ -583,7 +266,7 @@
                                             <tr>
                                                 <td>Anup</td>
                                                 <td>CSMT</td>
-                                                <td>Biryani</td>
+                                                
                                                 <td>25/05/2019</t>
                                                     <td>24/06/2019</td>
                                                     <td>29</td>
@@ -592,7 +275,7 @@
                                             <tr>
                                                 <td>Bhola</td>
                                                 <td>Ghatkopar</td>
-                                                <td>Pan Pizza</td>
+                                                
                                                 <td>12/07/2019</td>
                                                 <td>11/08/2019</td>
                                                 <td>28</td>
@@ -601,7 +284,7 @@
                                             <tr>
                                                 <td>Chandan</td>
                                                 <td>Juhu</td>
-                                                <td>Chat</td>
+                                                
                                                 <td>25/06/2019</td>
                                                 <td>24/07/2019</td>
                                                 <td>24</td>
@@ -610,7 +293,7 @@
                                             <tr>
                                                 <td>Devraj</td>
                                                 <td>Matunga</td>
-                                                <td>Chole Bhature</td>
+                                                
                                                 <td>14/05/2019</td>
                                                 <td>13/06/2019</td>
                                                 <td>25</td>
@@ -620,7 +303,7 @@
                                             <tr>
                                                 <td>Geetanjali</td>
                                                 <td>Reay Road</td>
-                                                <td>Chinese</td>
+                                               
                                                 <td>12/04/2019</td>
                                                 <td>11/05/2019</td>
                                                 <td>26</td>
@@ -629,7 +312,7 @@
                                             <tr>
                                                 <td>Himesh</td>
                                                 <td>Dadar</td>
-                                                <td>Milk Shake</td>
+                                               
                                                 <td>06/05/2019</td>
                                                 <td>05/06/2019</td>
                                                 <td>27</td>
@@ -638,7 +321,7 @@
                                             <tr>
                                                 <td>Ismail</td>
                                                 <td>Bandra</td>
-                                                <td>Paneer</td>
+                                                
                                                 <td>18/05/2019</td>
                                                 <td>17/06/2019</td>
                                                 <td>20</td>
@@ -647,7 +330,7 @@
                                             <tr>
                                                 <td>Jack</td>
                                                 <td>Mahim</td>
-                                                <td>Massor dal</td>
+                                                
                                                 <td>14/08/2019</td>
                                                 <td>13/0/2019</td>
                                                 <td>23</td>
@@ -656,7 +339,7 @@
                                             <tr>
                                                 <td>Jay</td>
                                                 <td>Borivali</td>
-                                                <td>Khichdi</td>
+                                                
                                                 <td>12/06/2019 </td>
                                                 <td>11/07/2019</td>
                                                 <td>28</td>
@@ -665,7 +348,7 @@
                                             <tr>
                                                 <td>Kamlesh</td>
                                                 <td>Goregoan</td>
-                                                <td>Samosa</td>
+                                                
                                                 <td>12/07/2019</td>
                                                 <td>11/08/2019</td>
                                                 <td>03</td>
@@ -674,7 +357,7 @@
                                             <tr>
                                                 <td>Faizal</td>
                                                 <td>Churchgate</td>
-                                                <td>Mendu Vada</td>
+                                                
                                                 <td>03/02/2019</td>
                                                 <td>02/03/2019</td>
                                                 <td>26</td>
@@ -683,7 +366,7 @@
                                             <tr>
                                                 <td>Ganesh</td>
                                                 <td>Currey Road</td>
-                                                <td>Sabundana Vada</td>
+                                                
                                                 <td>17/06/2019</td>
                                                 <td>16/07/2019</td>
                                                 <td>23</td>
