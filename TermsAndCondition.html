@@ -97,7 +97,7 @@
           <span>Tables</span></a>
       </li>
 
-      <li class="nav-item active">
+      <li class="nav-item ">
         <a class="nav-link" href="BannerImage.html">
             <i class="fas fa-fw fa-folder"></i>
             <span>Manage Banner Image</span></a>
@@ -122,26 +122,27 @@
             <i class="fas fa-fw fa-folder"></i>
             <span>Manage Customer Stories</span></a>
     </li>
+
+    <li class="nav-item ">
+        <a class="nav-link" href="Permission.html">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Manage Permission</span></a>
+    </li>
+    <li class="nav-item active">
+        <a class="nav-link " href="TermsAndCondition.html">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Terms And Condition</span></a>
+    </li>
     <li class="nav-item">
-      <a class="nav-link " href="Permission.html">
-          <i class="fas fa-fw fa-folder"></i>
-          <span>Manage Permission</span></a>
-  </li>
-  <li class="nav-item">
-      <a class="nav-link " href="TermsAndCondition.html">
-          <i class="fas fa-fw fa-folder"></i>
-          <span>Terms And Condition</span></a>
-  </li>
-  <li class="nav-item">
-          <a class="nav-link " href="PrivacyAndPolicy.html">
-              <i class="fas fa-fw fa-folder"></i>
-              <span>Privacy And Policy</span></a>
-      </li>
-      <li class="nav-item">
-              <a class="nav-link " href="ContactUs.html">
-                  <i class="fas fa-fw fa-folder"></i>
-                  <span>Contact Us</span></a>
-          </li>
+            <a class="nav-link " href="PrivacyAndPolicy.html">
+                <i class="fas fa-fw fa-folder"></i>
+                <span>Privacy And Policy</span></a>
+        </li>
+        <li class="nav-item">
+                <a class="nav-link " href="ContactUs.html">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Contact Us</span></a>
+            </li>
     </ul>
 
     <div id="content-wrapper">
@@ -153,62 +154,42 @@
           <li class="breadcrumb-item">
             <a href="index.html">Dashboard</a>
           </li>
-          <li class="breadcrumb-item active">Manage Banner Image</li>
+          <li class="breadcrumb-item active">Terms And Condition</li>
         </ol>
 
         <div class="card mb-3">
-            <div class="card-header">Select the latest banner image</div>
+            <div class="card-header">Terms And Condition</div>
             <br>
 
 
-            <form id="addBanner" name="addBanner" class="needs-validation" novalidate>
-                <div class="col-sm-6">
+            <form id="addTAC" name="TAC" class="needs-validation" novalidate>
+
+                
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                         
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Augue lacus viverra vitae congue. Consequat mauris nunc congue nisi vitae. Mauris pharetra et ultrices neque ornare. Quisque id diam vel quam elementum pulvinar. Elementum eu facilisis sed odio morbi quis commodo odio. Diam vulputate ut pharetra sit amet aliquam id diam. Feugiat nibh sed pulvinar proin gravida hendrerit. Imperdiet dui accumsan sit amet nulla facilisi morbi tempus iaculis. Id eu nisl nunc mi ipsum faucibus vitae. Magna ac placerat vestibulum lectus mauris ultrices eros in. Elementum integer enim neque volutpat ac tincidunt vitae semper. Nulla posuere sollicitudin aliquam ultrices sagittis orci.</p>
 
 
-                    <div class="col-sm-10">
-                        <div class="myDiv">
-                            <div class="input-group">
+<p>Enim praesent elementum facilisis leo. At elementum eu facilisis sed odio morbi quis. Vulputate ut pharetra sit amet. Adipiscing elit pellentesque habitant morbi tristique senectus et netus et. Cursus turpis massa tincidunt dui. Scelerisque mauris pellentesque pulvinar pellentesque habitant. Feugiat vivamus at augue eget arcu dictum varius duis at. Vulputate eu scelerisque felis imperdiet proin fermentum leo. In fermentum posuere urna nec tincidunt praesent. Ut enim blandit volutpat maecenas volutpat blandit aliquam. Dignissim sodales ut eu sem integer vitae. Sit amet consectetur adipiscing elit pellentesque. Odio ut enim blandit volutpat. Pulvinar sapien et ligula ullamcorper malesuada proin libero. Aliquam ut porttitor leo a. Tellus in hac habitasse platea dictumst vestibulum. Vulputate dignissim suspendisse in est ante. Suspendisse potenti nullam ac tortor. Elementum sagittis vitae et leo duis. Risus feugiat in ante metus dictum at tempor commodo.</p>  
 
-                                <div class="input-group-prepend">
+                         
+                            
 
-                                    <span class="input-group-text" id="inputGroupFileG">Upload</span>
-                                </div>
-
-                                <div class="custom-file">
-                                    <div class="myDiv">
-                                        <input type="file" class="custom-file-input" id="sliderinput" aria-describedby="inputGroupFileG" name="fchoose" accept="image/*" required onchange="convertImgToBase64(this,'imageBanner')">
-
-
-                                        <label class="custom-file-label" for="sliderinput">Choose file</label>
-
-
-                                        <div class="invalid-feedback">
-                                            <br> Please select an image
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-
-                    <div class="col-xl-3 col-sm-6 mb-3"><button type="submit" value="Submit" class="btn btn-info">Submit</button>
-                    </div>
+                            
+                  </div>
                 </div>
+               
+               
 
-                <div class="col-sm-4">
-                    <div class="float-right">
-                        <img id="imageBanner" src="" alt="" class="img-thumbnail">
-                    </div>
-                </div>
+             
 
             </form>
 
             <br>
             <div class="card-footer small text-muted"></div>
         </div>
-      </div>
+     
       <!-- /.container-fluid -->
 
       <!-- Sticky Footer -->
@@ -251,8 +232,6 @@
 
 
  <script src="js/common.js"></script>
- <script src="js/bannerimg.js"></script>
-
   <script src="js/validate.js"></script>
 
 

@@ -34,7 +34,31 @@
       <i class="fas fa-bars"></i>
     </button>
 
-
+    <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+        <div class="input-group">
+        
+          <div class="input-group-append">
+           
+          </div>
+        </div>
+      </form>
+  
+     
+      <ul class="navbar-nav ml-auto ml-md-0">
+        <li class="nav-item dropdown no-arrow mx-1">
+         
+        <li class="nav-item dropdown no-arrow">
+          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-user-circle fa-fw"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+            <a class="dropdown-item" href="Permission.html">Permission</a>
+          
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
+          </div>
+        </li>
+      </ul>
 
     </nav>
 
@@ -100,7 +124,26 @@
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Manage Customer Stories</span></a>
             </li>
-
+            <li class="nav-item">
+                <a class="nav-link " href="Permission.html">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Manage Permission</span></a>
+            </li>
+            <li class="nav-item">
+                    <a class="nav-link " href="TermsAndCondition.html">
+                        <i class="fas fa-fw fa-folder"></i>
+                        <span>Terms And Condition</span></a>
+                </li>
+                <li class="nav-item">
+                        <a class="nav-link " href="PrivacyAndPolicy.html">
+                            <i class="fas fa-fw fa-folder"></i>
+                            <span>Privacy And Policy</span></a>
+                    </li>
+                    <li class="nav-item">
+                            <a class="nav-link " href="ContactUs.html">
+                                <i class="fas fa-fw fa-folder"></i>
+                                <span>Contact Us</span></a>
+                        </li>
         </ul>
 
         <div id="content-wrapper">
@@ -131,17 +174,37 @@
                                         Please provide a new plan
 
                                     </div>
+                                    <br>
+                                    <label for="plan">Number of days:</label>
+
+                                    <input type="text" class="form-control" name="daysplan" id="plandays" placeholder="Add number of days" required>
+
+                                    <div class="invalid-feedback">
+                                        Please provide number of days
+
+                                    </div>
+                                    <br>
+                                    <label for="plan">Amount:</label>
+
+                                    <input type="text" class="form-control" name="amountplan" id="planamount" placeholder="Add amount" required>
+
+                                    <div class="invalid-feedback">
+                                        Please provide an amount
+
+                                    </div>
 
                                 </div>
-
-                                <textarea class="ckeditor" id="cktext" name="cktext" rows="6" placeholder="Plan description" required></textarea>
+                                <br>
+                                <textarea class="form-control rounded-0" id="planDesc" name="planDesc" rows="6" placeholder="Plan description" required></textarea>
 
                                 <script>
-                                    CKEDITOR.replace('cktext', {
-                                        height: 260,
-                                        width: 420,
-                                    });
-                                </script>
+                                    if (CKEDITOR.instances['planDesc'])
+                                                   CKEDITOR.remove(CKEDITOR.instances['planDesc']);                                   
+                                               CKEDITOR.replace('planDesc', {
+                                                   height: 260,
+                                                   width: 420,
+                                               });
+                                     </script>
                                 <div class="invalid-feedback">
                                     Please provide plan description
 
@@ -237,6 +300,7 @@
     <script src="js/sb-admin.min.js"></script>
 
     <script src="js/common.js"></script>
+    <script src="js/addplan.js"></script>
     <script src="js/validate.js"></script>
 
 

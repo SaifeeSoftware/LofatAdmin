@@ -11244,6 +11244,9 @@ label.error {
 }
 
 input#plan,
+input#plandays,
+input#uname
+input#planamount
 input#meal,
 input#customername,
 textarea,

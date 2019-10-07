@@ -97,7 +97,7 @@
           <span>Tables</span></a>
       </li>
 
-      <li class="nav-item active">
+      <li class="nav-item ">
         <a class="nav-link" href="BannerImage.html">
             <i class="fas fa-fw fa-folder"></i>
             <span>Manage Banner Image</span></a>
@@ -122,26 +122,27 @@
             <i class="fas fa-fw fa-folder"></i>
             <span>Manage Customer Stories</span></a>
     </li>
+
+    <li class="nav-item active">
+        <a class="nav-link" href="Permission.html">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Manage Permission</span></a>
+    </li>
     <li class="nav-item">
-      <a class="nav-link " href="Permission.html">
-          <i class="fas fa-fw fa-folder"></i>
-          <span>Manage Permission</span></a>
-  </li>
-  <li class="nav-item">
-      <a class="nav-link " href="TermsAndCondition.html">
-          <i class="fas fa-fw fa-folder"></i>
-          <span>Terms And Condition</span></a>
-  </li>
-  <li class="nav-item">
-          <a class="nav-link " href="PrivacyAndPolicy.html">
-              <i class="fas fa-fw fa-folder"></i>
-              <span>Privacy And Policy</span></a>
-      </li>
-      <li class="nav-item">
-              <a class="nav-link " href="ContactUs.html">
-                  <i class="fas fa-fw fa-folder"></i>
-                  <span>Contact Us</span></a>
-          </li>
+        <a class="nav-link " href="TermsAndCondition.html">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Terms And Condition</span></a>
+    </li>
+    <li class="nav-item">
+            <a class="nav-link " href="PrivacyAndPolicy.html">
+                <i class="fas fa-fw fa-folder"></i>
+                <span>Privacy And Policy</span></a>
+        </li>
+        <li class="nav-item">
+                <a class="nav-link " href="ContactUs.html">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Contact Us</span></a>
+            </li>
     </ul>
 
     <div id="content-wrapper">
@@ -153,62 +154,75 @@
           <li class="breadcrumb-item">
             <a href="index.html">Dashboard</a>
           </li>
-          <li class="breadcrumb-item active">Manage Banner Image</li>
+          <li class="breadcrumb-item active">Manage Permission</li>
         </ol>
 
         <div class="card mb-3">
-            <div class="card-header">Select the latest banner image</div>
+            <div class="card-header">Permission</div>
             <br>
 
 
-            <form id="addBanner" name="addBanner" class="needs-validation" novalidate>
+            <form id="addPermission" name="addPermission" class="needs-validation" novalidate>
+
                 <div class="col-sm-6">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="plan">Enter Username:</label>
 
+                            <input type="text" class="form-control" name="uname" id="uname" placeholder="Username" required>
 
-                    <div class="col-sm-10">
-                        <div class="myDiv">
-                            <div class="input-group">
+                            <div class="invalid-feedback">
+                                Please provide a username
 
-                                <div class="input-group-prepend">
-
-                                    <span class="input-group-text" id="inputGroupFileG">Upload</span>
-                                </div>
-
-                                <div class="custom-file">
-                                    <div class="myDiv">
-                                        <input type="file" class="custom-file-input" id="sliderinput" aria-describedby="inputGroupFileG" name="fchoose" accept="image/*" required onchange="convertImgToBase64(this,'imageBanner')">
-
-
-                                        <label class="custom-file-label" for="sliderinput">Choose file</label>
-
-
-                                        <div class="invalid-feedback">
-                                            <br> Please select an image
-                                        </div>
-                                    </div>
-
-                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <br>
+                            <br>
+                          
+<div class="custom-control custom-checkbox custom-control-inline">
+    <input type="checkbox" class="custom-control-input" id="Banner">
+    <label class="custom-control-label" for="Banner">Banner</label>
+  </div>
+  <br>
+ 
+  <div class="custom-control custom-checkbox custom-control-inline">
+    <input type="checkbox" class="custom-control-input" id="Intro text and image">
+    <label class="custom-control-label" for="Intro text and image">Intro text and image</label>
+  </div>
+  <br>
+  
+  <div class="custom-control custom-checkbox custom-control-inline">
+    <input type="checkbox" class="custom-control-input" id="Plan">
+    <label class="custom-control-label" for="Plan">Plan</label>
+  </div>
+  <br>
+  
+  <div class="custom-control custom-checkbox custom-control-inline">
+      <input type="checkbox" class="custom-control-input" id="Meal">
+      <label class="custom-control-label" for="Meal">Meal</label>
+    </div>
+    <br>
+   
+    <div class="custom-control custom-checkbox custom-control-inline">
+      <input type="checkbox" class="custom-control-input" id="Customer Story">
+      <label class="custom-control-label" for="Customer Story">Customer Story</label>
+    </div>
+  
 
-                    <div class="col-xl-3 col-sm-6 mb-3"><button type="submit" value="Submit" class="btn btn-info">Submit</button>
-                    </div>
+
+
+                           
+                  </div>
+                </div>
+                <div class="col-xl-3 col-sm-6 mb-3"><button type="submit" value="Apply" class="btn btn-info">Apply</button></div>
                 </div>
 
-                <div class="col-sm-4">
-                    <div class="float-right">
-                        <img id="imageBanner" src="" alt="" class="img-thumbnail">
-                    </div>
-                </div>
+             
 
             </form>
 
             <br>
             <div class="card-footer small text-muted"></div>
         </div>
-      </div>
+     
       <!-- /.container-fluid -->
 
       <!-- Sticky Footer -->
@@ -251,8 +265,6 @@
 
 
  <script src="js/common.js"></script>
- <script src="js/bannerimg.js"></script>
-
   <script src="js/validate.js"></script>
 
 
