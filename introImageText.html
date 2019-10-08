@@ -20,7 +20,8 @@
   <!-- Custom styles for this template-->
   <link href="css/sb-admin.css" rel="stylesheet">
 
-  <script src="https://cdn.ckeditor.com/4.13.0/standard-all/ckeditor.js"></script>
+  
+  <script src="https://cdn.ckeditor.com/ckeditor5/12.4.0/classic/ckeditor.js"></script>
 
 </head>
 
@@ -54,7 +55,7 @@
           <a class="dropdown-item" href="Permission.html">Permission</a>
         
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
+          <a class="dropdown-item" href="login.html" data-toggle="modal" data-target="#logoutModal">Logout</a>
         </div>
       </li>
     </ul>
@@ -196,20 +197,35 @@
                     <div class="col-sm-12">
                         <label for >Intro description: </label>
                        
-                        <textarea class="form-control rounded-0" id="intordesc" name="intordesc" rows="6" placeholder="Intro description" ></textarea>
-                        <script>
-                         if (CKEDITOR.instances['intordesc'])
-                                        CKEDITOR.remove(CKEDITOR.instances['intordesc']);                                   
-                                    CKEDITOR.replace('intordesc', {
-                                        height: 260,
-                                        width: 420,
-                                    });
-                          </script>
-                       
-                           <div class="invalid-feedback">
-                                 Please provide Intro description
-                        
-                            </div>
+                        <div>
+                          <textarea name="content" id="editor"></textarea>
+                          <p id="txtAreaEditor" class="hide">This field is required</p>
+                          <button id="submit">Submit</button>
+                          <script>
+                            let editor;
+                            ClassicEditor
+                                .create( document.querySelector( '#editor' ) )
+                                .then( newEditor => {
+                                editor = newEditor;
+                                
+                            } )
+                                .catch( error => {
+                                    console.error( error );
+                                } );
+                                document.querySelector( '#submit' ).addEventListener( 'click', () => {
+                                  debugger;
+                                const editorData = editor.getData();
+                                console.log(editorData);
+                                if(editorData === ""){
+                                $("#editor + .ck.ck-editor").addClass("invalidate");
+                                $("#txtAreaEditor").removeClass("hide");
+                                }else{
+                                  $("#editor + .ck.ck-editor").removeClass("invalidate");
+                                  $("#txtAreaEditor").addClass("hide");
+                                }
+                                });
+                        </script>
+                        </div>
                     </div>
 
                         <br>
@@ -255,7 +271,23 @@
     <i class="fas fa-angle-up"></i>
   </a>
 
-  
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-primary" href="login.html">Logout</a>
+            </div>
+        </div>
+    </div>
+</div>
  
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
