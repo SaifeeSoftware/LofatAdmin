@@ -140,10 +140,11 @@
               <i class="fas fa-fw fa-folder"></i>
               <span>Privacy And Policy</span></a>
       </li>
-      <li class="nav-item">" href="ContactUs.html">
-                  <i class="fas fa-fw fa-folder"></i>
-                  <span>Contact Us</span></a>
-          </li>
+      <li class="nav-item ">
+        <a class="nav-link " href="ContactUs.html">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Contact Us</span></a>
+    </li>
     </ul>
 
     <div id="content-wrapper">
@@ -193,18 +194,19 @@
                         </div>
                     </div>
 
+
                     <br>
                     <div class="col-sm-12">
                         <label for >Intro description: </label>
                        
                         <div>
-                          <textarea name="content" id="editor"></textarea>
-                          <p id="txtAreaEditor" class="hide">This field is required</p>
-                          <button id="submit">Submit</button>
+                          <textarea name="content" id="introeditor"></textarea>
+                          <p id="txtAreaEditor" class="hide">This field is required</p><br>
+                          <button id="submit" value="Submit" class="btn btn-info">Submit</button>
                           <script>
                             let editor;
                             ClassicEditor
-                                .create( document.querySelector( '#editor' ) )
+                                .create( document.querySelector( '#introeditor' ) )
                                 .then( newEditor => {
                                 editor = newEditor;
                                 
@@ -217,10 +219,10 @@
                                 const editorData = editor.getData();
                                 console.log(editorData);
                                 if(editorData === ""){
-                                $("#editor + .ck.ck-editor").addClass("invalidate");
+                                $("#introeditor + .ck.ck-editor").addClass("invalidate");
                                 $("#txtAreaEditor").removeClass("hide");
                                 }else{
-                                  $("#editor + .ck.ck-editor").removeClass("invalidate");
+                                  $("#introeditor + .ck.ck-editor").removeClass("invalidate");
                                   $("#txtAreaEditor").addClass("hide");
                                 }
                                 });
@@ -230,8 +232,7 @@
 
                         <br>
 
-                    <div class="col-xl-3 col-sm-6 mb-3"><button type="submit" value="Submit" class="btn btn-info">Submit</button>
-                    </div>
+                   
                 </div>
 
                 <div class="col-sm-4">

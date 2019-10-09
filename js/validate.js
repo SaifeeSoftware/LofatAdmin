@@ -210,7 +210,7 @@ function addPlan() {
     var plan = $("#plan").val();
     var plandays =$("#plandays").val();
     var planamount=$("#planamount").val();
-    var ckplandesc = CKEDITOR.instances.planDesc.getData();
+    var ckplandesc = CKEDITOR.instances.planeditor.getData();
     if (plan !== "") {
         plantemplate.Name = plan;
         plantemplate.Description = ckplandesc;
@@ -242,7 +242,7 @@ function addPlanErr(err) {
 
 function addMeal() {
     var meal = $("#meal").val();
-    var mealdesc = CKEDITOR.instances.mealdesc.getData();
+    var mealdesc = CKEDITOR.instances.mealeditor.getData();
     var addSelectPlan = $("#ddSelectPlan option:selected").text();
     var addSelectPlanValue = $("#ddSelectPlan option:selected").val();
 
@@ -309,7 +309,8 @@ var custtemplate = {
 function addCustomerdata() {
     debugger;
     var customername = $("#customername").val();
-    var custDesc = CKEDITOR.instances.custDesc.getData();
+    
+    var custDesc = CKEDITOR.instances.custeditor.getData();
     
     var customerStoryData = {
         "key": "CustomerStory",

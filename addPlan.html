@@ -20,7 +20,7 @@
     <!-- Custom styles for this template-->
     <link href="css/sb-admin.css" rel="stylesheet">
 
-    <script src="https://cdn.ckeditor.com/4.13.0/standard-all/ckeditor.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/12.4.0/classic/ckeditor.js"></script>
 
 </head>
 
@@ -193,59 +193,75 @@
 
                                     </div>
 
-                                </div>
-                                <br>
-                                <textarea class="form-control rounded-0" id="planDesc" name="planDesc" rows="6" placeholder="Plan description" required></textarea>
+                                </div></div><br>
 
-                                <script>
-                                    if (CKEDITOR.instances['planDesc'])
-                                                   CKEDITOR.remove(CKEDITOR.instances['planDesc']);                                   
-                                               CKEDITOR.replace('planDesc', {
-                                                   height: 260,
-                                                   width: 420,
-                                               });
-                                     </script>
-                                <div class="invalid-feedback">
-                                    Please provide plan description
-
-                                </div>
-
-
-                                <br>
-
-                            </div>
-
-
-
-                            <div class="col-sm-10">
-
-                                <div class="myDiv">
-
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-
-                                            <span class="input-group-text" id="inputGroupFile">Upload</span>
-                                        </div>
-                                        <div class="custom-file">
-                                            <div class="myDiv">
-                                                <input type="file" class="custom-file-input" id="addplaninput" aria-describedby="inputGroupFile" name="fchooseprofile" accept="image/*" required onchange="convertImgToBase64(this,'planImageBanner')">
-                                                <label class="custom-file-label" for="addplaninput">Choose file</label>
-
-                                                <div class="invalid-feedback"> <br>Please select an image
+                                <div class="form-group">
+                                    <div class="col-sm-10">
+        
+                                        <div class="myDiv">
+        
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+        
+                                                    <span class="input-group-text" id="inputGroupFile">Upload</span>
                                                 </div>
-
+                                                <div class="custom-file">
+                                                    <div class="myDiv">
+                                                        <input type="file" class="custom-file-input" id="addplaninput" aria-describedby="inputGroupFile" name="fchooseprofile" accept="image/*" required onchange="convertImgToBase64(this,'planImageBanner')">
+                                                <label class="custom-file-label" for="addplaninput">Choose file</label>
+                                                        <div class="invalid-feedback"><br> Please select an image
+                                                        </div>
+                                                    </div>
+        
+                                                </div>
                                             </div>
+        
                                         </div>
-                                    </div>
+        
+                                    </div></div>
+                               
 
-                                </div>
-                            </div>
+                           <br>
+                           
+                           
+                           <div class="col-sm-12">
+                            <label for >Plan description: </label>
+                           
+                            <div>
+                                <textarea name="content" id="planeditor"></textarea>
+                                <p id="txtAreaEditor" class="hide">This field is required</p><br>
+                               <button id="submit" class="btn btn-info">Submit</button><br>
+                                <script>
+                                  let editor;
+                                  ClassicEditor
+                                      .create( document.querySelector( '#planeditor' ) )
+                                      .then( newEditor => {
+                                      editor = newEditor;
+                                      
+                                  } )
+                                      .catch( error => {
+                                          console.error( error );
+                                      } );
+                                      document.querySelector( '#submit' ).addEventListener( 'click', () => {
+                                        debugger;
+                                      const editorData = editor.getData();
+                                      console.log(editorData);
+                                      if(editorData === ""){
+                                      $("#planeditor + .ck.ck-editor").addClass("invalidate");
+                                      $("#txtAreaEditor").removeClass("hide");
+                                      }else{
+                                        $("#planeditor + .ck.ck-editor").removeClass("invalidate");
+                                        $("#txtAreaEditor").addClass("hide");
+                                      }
+                                      });
+                              </script></div></div>
+                             <br>
 
-                            <br>
-                            <div class="col-xl-3 col-sm-6 mb-3"><button type="submit" class="btn btn-info">Submit</button></div>
+
+                        </div>
                             <p id="planDataRes"></p>
                             <br>
-                        </div>
+                       
                         <div class="col-sm-4">
                             <div class="float-right">
                                 <img id="planImageBanner" src="" alt="" class="img-thumbnail">

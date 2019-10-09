@@ -20,7 +20,7 @@
     <!-- Custom styles for this template-->
     <link href="css/sb-admin.css" rel="stylesheet">
 
-    <script src="https://cdn.ckeditor.com/4.13.0/standard-all/ckeditor.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/12.4.0/classic/ckeditor.js"></script>
 
 </head>
 
@@ -177,21 +177,6 @@
 
                                     </div>
                                 </div>
-
-                                <textarea class="form-control rounded-0" id="custDesc" name="cust_desc" rows="6" placeholder="Customer description" required></textarea>
-                                <script>
-                                    if (CKEDITOR.instances['custDesc'])
-                                        CKEDITOR.remove(CKEDITOR.instances['custDesc']);                                   
-                                    CKEDITOR.replace('custDesc', {
-                                        height: 260,
-                                        width: 420,
-                                    });
-                                </script>
-
-                                <div class="invalid-feedback">
-                                    Please provide customer description
-
-                                </div>
                                 <br>
                             </div>
 
@@ -222,9 +207,41 @@
 
                             </div>
                             <br>
-                            <div class="col-xl-3 col-sm-6 mb-3">
-                                <button type="submit" class="btn btn-info">Submit</button>
-                            </div>
+                            <div class="col-sm-12">
+                                <label for >Customer story description: </label>
+                               
+                               
+                            <div>
+                                <textarea name="content" id="custeditor"></textarea>
+                                <p id="txtAreaEditor" class="hide">This field is required</p><br>
+                                <button id="submit" value="Submit" class="btn btn-info">Submit</button>
+                                <script>
+                                  let editor;
+                                  ClassicEditor
+                                      .create( document.querySelector( '#custeditor' ) )
+                                      .then( newEditor => {
+                                      editor = newEditor;
+                                      
+                                  } )
+                                      .catch( error => {
+                                          console.error( error );
+                                      } );
+                                      document.querySelector( '#submit' ).addEventListener( 'click', () => {
+                                        debugger;
+                                      const editorData = editor.getData();
+                                      console.log(editorData);
+                                      if(editorData === ""){
+                                      $("#custeditor + .ck.ck-editor").addClass("invalidate");
+                                      $("#txtAreaEditor").removeClass("hide");
+                                      }else{
+                                        $("#custeditor + .ck.ck-editor").removeClass("invalidate");
+                                        $("#txtAreaEditor").addClass("hide");
+                                      }
+                                      });
+                              </script>
+                              </div></div>
+                            <br>
+                           
                             <p id="custStoryDataResp"></p>
                             <br>
                         </div>

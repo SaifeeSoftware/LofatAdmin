@@ -11244,15 +11244,20 @@ label.error {
 }
 
 input#plan,
+input#planamount,
 input#plandays,
-input#uname
-input#planamount
+input#uname,
 input#meal,
 input#customername,
-textarea,
+
 #ddSelectCat,
 #ddSelectPlan {
     width: 420px;
+}
+
+input#contactUsAdd,
+textarea{
+    width: 406px;
 }
 
 input[type="file"] {
@@ -11300,6 +11305,10 @@ span.valid {
     color: green;
 }
 
+.col-sm-12 {
+    width: 455px;
+}
+
 article,
 aside,
 figure,
@@ -11335,12 +11344,15 @@ section {
     color: green;
 }
 
-#editor + .ck.ck-editor.invalidate{
+#planeditor,#mealeditor,#custeditor,
+#introeditor + .ck.ck-editor.invalidate{
 border: 1px solid red;
 }
 
 
 #txtAreaEditor {
+   
 text-align: left;
 color: red;
 }
+
