@@ -20,7 +20,7 @@
     <!-- Custom styles for this template-->
     <link href="css/sb-admin.css" rel="stylesheet">
 
-    <script src="https://cdn.ckeditor.com/ckeditor5/12.4.0/classic/ckeditor.js"></script>
+    <script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
 
 </head>
 
@@ -226,36 +226,22 @@
 <br>
 <div class="col-sm-12">
     <label for >Meal description: </label>
-   
     <div>
-                                <textarea name="content" id="mealeditor"></textarea>
-                                <p id="txtAreaEditor" class="hide">This field is required</p><br>
-                                <button id="submit" value="Submit" class="btn btn-info">Submit</button>
-                                <script>
-                                  let editor;
-                                  ClassicEditor
-                                      .create( document.querySelector( '#mealeditor' ) )
-                                      .then( newEditor => {
-                                      editor = newEditor;
-                                      
-                                  } )
-                                      .catch( error => {
-                                          console.error( error );
-                                      } );
-                                      document.querySelector( '#submit' ).addEventListener( 'click', () => {
-                                        debugger;
-                                      const editorData = editor.getData();
-                                      console.log(editorData);
-                                      if(editorData === ""){
-                                      $("#mealeditor + .ck.ck-editor").addClass("invalidate");
-                                      $("#txtAreaEditor").removeClass("hide");
-                                      }else{
-                                        $("#mealeditor + .ck.ck-editor").removeClass("invalidate");
-                                        $("#txtAreaEditor").addClass("hide");
-                                      }
-                                      });
-                              </script>
-                              </div></div>
+        <textarea name="content" id="mealeditor"></textarea>
+        <p id="txtAreaEditor" class="hide">This field is required</p><br>
+       <button id="submit" class="btn btn-info">Submit</button><br>
+        <script>
+          if (CKEDITOR.instances['mealeditor'])
+                CKEDITOR.remove(CKEDITOR.instances['mealeditor']);                                   
+            CKEDITOR.replace('mealeditor', {
+                height: 260,
+                width: 420,
+            });
+              
+      </script>
+      </div>
+   
+    </div>
 
                             <br>
                             <div class="col-xl-3 col-sm-6 mb-3">

@@ -1,3 +1,81 @@
+
+(function () {
+    'use strict';
+    window.addEventListener('load', function () {
+
+        var forms = document.getElementsByClassName('needs-validation');
+
+        var validation = Array.prototype.filter.call(forms, function (form) {
+            form.addEventListener('submit', function (event) {
+                if (form.checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                } else {
+
+                    switch (form.id) {
+
+                        case "addBanner":
+                            banner();
+                            event.preventDefault();
+                            event.stopPropagation();
+                            break;
+
+                        case "addNewPlan":
+
+                            addPlan();
+                            event.preventDefault();
+                            event.stopPropagation();
+                            break;
+
+                        case "addPlanMeadDesc":
+
+                            addMeal();
+                            event.preventDefault();
+                            event.stopPropagation();
+                            break;
+
+                        case "addCustdata":
+
+                            addCustomerdata();
+                            event.preventDefault();
+                            event.stopPropagation();
+                            break;
+
+                    }
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+    }, false);
+})();
+
+
+$("#custprofileinput", "#sliderinput", "#mealdescinput", "#addplaninput", "#introinput").on("change", convertImgToBase64);
+
+function convertImgToBase64(inputFile, imageid) {
+
+    if (inputFile.files && inputFile.files[0]) {
+
+        var FR = new FileReader();
+
+        FR.addEventListener("load", function (e) {
+            document.getElementById(imageid).src = e.target.result;
+
+
+            if (stringPath !== "") {
+                stringPath = "";
+
+
+            }
+            stringPath = e.target.result;
+
+        });
+
+        FR.readAsDataURL(inputFile.files[0]);
+    }
+
+}
+
 function sendRequest(endpoint, jsondata, succFunc, errorFunc, requestType) {
     debugger;
     var apiurl = "http://localhost:8045/api";

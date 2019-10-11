@@ -42,14 +42,14 @@ function checkPass() {
 //     }
 // }
 
-function username_validate(username) {
-    var regMail = /^[a-zA-Z0-9+]{5,7}$/;
-    if (regMail.test(username) == false) {
-        document.getElementById("unamestatus").innerHTML = "<span class='warning'>Username Should contain 5 to 7 alphanumeric character</span>";
-    } else {
-        document.getElementById("unamestatus").innerHTML = "<span class='valid'>Thanks, you have entered a valid Username!</span>";
-    }
-}
+// function username_validate(username) {
+//     var regMail = /^[a-zA-Z0-9+]{5,7}$/;
+//     if (regMail.test(username) == false) {
+//         document.getElementById("unamestatus").innerHTML = "<span class='warning'>Username Should contain 5 to 7 alphanumeric character</span>";
+//     } else {
+//         document.getElementById("unamestatus").innerHTML = "<span class='valid'>Thanks, you have entered a valid Username!</span>";
+//     }
+// }
 
 function Validate(txt) {
     txt.value = txt.value.replace(/[^a-zA-Z-'\n\r.]+/g, '');

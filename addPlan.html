@@ -20,7 +20,10 @@
     <!-- Custom styles for this template-->
     <link href="css/sb-admin.css" rel="stylesheet">
 
-    <script src="https://cdn.ckeditor.com/ckeditor5/12.4.0/classic/ckeditor.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
 
 </head>
 
@@ -232,34 +235,32 @@
                                 <p id="txtAreaEditor" class="hide">This field is required</p><br>
                                <button id="submit" class="btn btn-info">Submit</button><br>
                                 <script>
-                                  let editor;
-                                  ClassicEditor
-                                      .create( document.querySelector( '#planeditor' ) )
-                                      .then( newEditor => {
-                                      editor = newEditor;
+                                  if (CKEDITOR.instances['planeditor'])
+                                        CKEDITOR.remove(CKEDITOR.instances['planeditor']);                                   
+                                    CKEDITOR.replace('planeditor', {
+                                        height: 260,
+                                        width: 420,
+                                    });
                                       
-                                  } )
-                                      .catch( error => {
-                                          console.error( error );
-                                      } );
-                                      document.querySelector( '#submit' ).addEventListener( 'click', () => {
-                                        debugger;
-                                      const editorData = editor.getData();
-                                      console.log(editorData);
-                                      if(editorData === ""){
-                                      $("#planeditor + .ck.ck-editor").addClass("invalidate");
-                                      $("#txtAreaEditor").removeClass("hide");
-                                      }else{
-                                        $("#planeditor + .ck.ck-editor").removeClass("invalidate");
-                                        $("#txtAreaEditor").addClass("hide");
-                                      }
-                                      });
-                              </script></div></div>
+                              </script>
+                              </div></div>
                              <br>
+                             <div style="position: relative; min-height: 300px;">
+                                <div style="position: absolute; top: 0; right: 0;">
+                                    <div class="toast fade hide" id="planDataRes" >
+                                
+                                <div class="toast-header" >
+                                    <strong class="mr-auto"> Alert</strong>
+                                    <small class="text-muted">just now</small>
+                                    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+                                </div>
+                                <div class="toast-body"></div>
+                            </div>
+                        </div>
 
+                        </div>                             
 
                         </div>
-                            <p id="planDataRes"></p>
                             <br>
                        
                         <div class="col-sm-4">
@@ -269,6 +270,8 @@
                             </div>
                         </div>
 
+
+                        
                     </form>
                     <div class="card-footer small text-muted"></div>
                 </div>
@@ -317,6 +320,11 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

@@ -20,7 +20,7 @@
     <!-- Custom styles for this template-->
     <link href="css/sb-admin.css" rel="stylesheet">
 
-    <script src="https://cdn.ckeditor.com/ckeditor5/12.4.0/classic/ckeditor.js"></script>
+    <script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
 
 </head>
 
@@ -211,35 +211,20 @@
                                 <label for >Customer story description: </label>
                                
                                
-                            <div>
-                                <textarea name="content" id="custeditor"></textarea>
-                                <p id="txtAreaEditor" class="hide">This field is required</p><br>
-                                <button id="submit" value="Submit" class="btn btn-info">Submit</button>
-                                <script>
-                                  let editor;
-                                  ClassicEditor
-                                      .create( document.querySelector( '#custeditor' ) )
-                                      .then( newEditor => {
-                                      editor = newEditor;
-                                      
-                                  } )
-                                      .catch( error => {
-                                          console.error( error );
-                                      } );
-                                      document.querySelector( '#submit' ).addEventListener( 'click', () => {
-                                        debugger;
-                                      const editorData = editor.getData();
-                                      console.log(editorData);
-                                      if(editorData === ""){
-                                      $("#custeditor + .ck.ck-editor").addClass("invalidate");
-                                      $("#txtAreaEditor").removeClass("hide");
-                                      }else{
-                                        $("#custeditor + .ck.ck-editor").removeClass("invalidate");
-                                        $("#txtAreaEditor").addClass("hide");
-                                      }
-                                      });
-                              </script>
-                              </div></div>
+                                <div>
+                                    <textarea name="content" id="custeditor"></textarea>
+                                    <p id="txtAreaEditor" class="hide">This field is required</p><br>
+                                   <button id="submit" class="btn btn-info">Submit</button><br>
+                                    <script>
+                                      if (CKEDITOR.instances['custeditor'])
+                                            CKEDITOR.remove(CKEDITOR.instances['custeditor']);                                   
+                                        CKEDITOR.replace('custeditor', {
+                                            height: 260,
+                                            width: 420,
+                                        });
+                                          
+                                  </script>
+                                  </div></div>
                             <br>
                            
                             <p id="custStoryDataResp"></p>

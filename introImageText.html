@@ -21,7 +21,7 @@
   <link href="css/sb-admin.css" rel="stylesheet">
 
   
-  <script src="https://cdn.ckeditor.com/ckeditor5/12.4.0/classic/ckeditor.js"></script>
+  <script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
 
 </head>
 
@@ -202,30 +202,15 @@
                         <div>
                           <textarea name="content" id="introeditor"></textarea>
                           <p id="txtAreaEditor" class="hide">This field is required</p><br>
-                          <button id="submit" value="Submit" class="btn btn-info">Submit</button>
+                         <button id="submit" class="btn btn-info">Submit</button><br>
                           <script>
-                            let editor;
-                            ClassicEditor
-                                .create( document.querySelector( '#introeditor' ) )
-                                .then( newEditor => {
-                                editor = newEditor;
+                            if (CKEDITOR.instances['introeditor'])
+                                  CKEDITOR.remove(CKEDITOR.instances['introeditor']);                                   
+                              CKEDITOR.replace('introeditor', {
+                                  height: 260,
+                                  width: 420,
+                              });
                                 
-                            } )
-                                .catch( error => {
-                                    console.error( error );
-                                } );
-                                document.querySelector( '#submit' ).addEventListener( 'click', () => {
-                                  debugger;
-                                const editorData = editor.getData();
-                                console.log(editorData);
-                                if(editorData === ""){
-                                $("#introeditor + .ck.ck-editor").addClass("invalidate");
-                                $("#txtAreaEditor").removeClass("hide");
-                                }else{
-                                  $("#introeditor + .ck.ck-editor").removeClass("invalidate");
-                                  $("#txtAreaEditor").addClass("hide");
-                                }
-                                });
                         </script>
                         </div>
                     </div>
