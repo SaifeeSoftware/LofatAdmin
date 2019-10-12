@@ -125,3 +125,10 @@ function addPlan() {
      }
  }
  
+
+$(document).ready(function () {
+    populateSelect();
+    
+
+    
+});

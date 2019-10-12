@@ -7,6 +7,16 @@ $('#mealdescinput').on('change', function () {
     $(this).next('.custom-file-label').html(fileName);
 })
 
+var catData = [{
+    "categories": "Breakfast"
+},
+{
+    "categories": "Lunch"
+},
+{
+    "categories": "Dinner"
+}];
+
 var mealtemplate = {
     "Id": 0,
     "PlanId": 0,
@@ -50,3 +60,44 @@ function addMealErr(err) {
         $("#mealDataResp").removeClass().addClass("errorResp").html(err.statusText);
     }
 }
+
+
+
+function populateSelectCat() {
+
+    var ele = $('#ddSelectCat');
+    for (var i = 0; i < catData.length; i++) {
+
+        $(ele).html($(ele).html() + '<option value>' + catData[i]['categories'] + '</option>');
+
+    }
+}
+
+function populateSelect() {
+    debugger;
+    sendRequest("/plans/GetPlans", {}, bindSelectPlanSuccess, bindSelectPlanErr, "GET");
+}
+
+
+function bindSelectPlanSuccess(result) {
+    debugger;
+    var ele = $('#ddSelectPlan');
+    for (var i = 0; i < result.length; i++) {
+
+        $(ele).html($(ele).html() + '<option value=' + result[i]['id'] + '>' + result[i]['name'] + '</option>');
+
+    }
+}
+function bindSelectPlanErr(err) {
+    debugger;
+    if (err) {
+        $("#planDataRes").removeClass().addClass("errorResp").html(err.statusText);
+    }
+}
+
+$(document).ready(function () {
+   
+    populateSelectCat();
+
+    
+});

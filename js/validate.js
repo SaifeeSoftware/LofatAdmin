@@ -1,82 +1,51 @@
 
+(function () {
+    'use strict';
+    window.addEventListener('load', function () {
 
-var stringPath = "";
-var banImg = {
-    "img": [{
-        "sliderimg": "C:\Mypic\ab.jpg"
-    },
-    {
-        "sliderimg": "C:\Mypic\ac.jpg"
-    },
-    {
-        "sliderimg": "C:\Mypic\ad.jpg"
-    },
-    ]
-};
+        var forms = document.getElementsByClassName('needs-validation');
 
-var imgTemplate = {
-    "sliderimg": ""
-};
+        var validation = Array.prototype.filter.call(forms, function (form) {
+            form.addEventListener('submit', function (event) {
+                if (form.checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                } else {
 
-function banner() {
-    imgTemplate.sliderimg = stringPath;
-    banImg.img.push(imgTemplate);
-}
+                    switch (form.id) {
 
-var catData = [{
-    "categories": "Breakfast"
-},
-{
-    "categories": "Lunch"
-},
-{
-    "categories": "Dinner"
-}];
+                        case "addBanner":
+                            banner();
+                            event.preventDefault();
+                            event.stopPropagation();
+                            break;
 
-function populateSelectCat() {
+                        case "addNewPlan":
 
-    var ele = $('#ddSelectCat');
-    for (var i = 0; i < catData.length; i++) {
+                            addPlan();
+                            event.preventDefault();
+                            event.stopPropagation();
+                            break;
 
-        $(ele).html($(ele).html() + '<option value>' + catData[i]['categories'] + '</option>');
+                        case "addPlanMeadDesc":
 
-    }
-}
+                            addMeal();
+                            event.preventDefault();
+                            event.stopPropagation();
+                            break;
 
-function populateSelect() {
-    debugger;
-    sendRequest("/plans/GetPlans", {}, bindSelectPlanSuccess, bindSelectPlanErr, "GET");
-}
+                        case "addCustdata":
 
+                            addCustomerdata();
+                            event.preventDefault();
+                            event.stopPropagation();
+                            break;
 
-function bindSelectPlanSuccess(result) {
-    debugger;
-    var ele = $('#ddSelectPlan');
-    for (var i = 0; i < result.length; i++) {
-
-        $(ele).html($(ele).html() + '<option value=' + result[i]['id'] + '>' + result[i]['name'] + '</option>');
-
-    }
-}
-function bindSelectPlanErr(err) {
-    debugger;
-    if (err) {
-        $("#planDataRes").removeClass().addClass("errorResp").html(err.statusText);
-    }
-}
-
-$(document).ready(function () {
-    populateSelect();
-    populateSelectCat();
-
-    $("#custTableLink").click(function (e) {
-        debugger;
-        e.preventDefault();
-        var aid = $(this).attr("href");
-        $('html,body').animate({ scrollTop: $(aid).offset().top }, 'slow');
-    });
-    $('.toast').toast('show');
-});
-
-
+                    }
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+    }, false);
+})();
 
