@@ -3,9 +3,10 @@ function pass_val(pass) {
     if (regPass.test(pass) == false) {
         document.getElementById("passstatus").innerHTML = "<span class='warning'>Please enter you password between 7-9 character atleast one number, alphabet, special character</span>";
 
-    } else {
-        document.getElementById("passstatus").innerHTML = "<span class='valid'>Thanks for entering password</span>";
-    }
+     } 
+   // else {
+    //     document.getElementById("passstatus").innerHTML = "<span class='valid'>Thanks for entering password</span>";
+    // }
 }
 
 function checkPass() {
